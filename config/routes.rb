@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :listings do
-    get '/featured', to: "listings#featured_listings"
-  end
+  get '/listings/featured', to: "listings#featured_listings"
+
+  resources :listings
 end

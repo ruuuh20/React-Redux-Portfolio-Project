@@ -8,7 +8,7 @@ class CreateListings < ActiveRecord::Migration[5.1]
       t.integer :listing_price
       t.integer :beds
       t.integer :baths
-      t.text :description
+      t.string :description
       t.boolean :featured
     end
   end

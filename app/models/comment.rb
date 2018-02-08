@@ -1,4 +1,4 @@
-class Comments < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :listing
 
   def date

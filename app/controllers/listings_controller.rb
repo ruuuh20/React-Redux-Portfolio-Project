@@ -9,7 +9,7 @@ class ListingsController < ApplicationController
     render json: listing
   end
 
-  def listings
+  def index
     listings = Listing.all
     render json: listings
   end
