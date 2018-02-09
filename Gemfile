@@ -35,6 +35,8 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'autoprefixer-rails'
+gem 'foreman', '~> 0.82.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
