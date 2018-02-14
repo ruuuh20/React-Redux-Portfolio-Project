@@ -5,4 +5,4 @@ export function fetchListings() {
     return fetch('http://localhost:3001/listings')
       .then(response => response.json())
       .then(listings => dispatch({ type: 'FETCH_LISTINGS', payload: listings }));
-  };
+  }};
