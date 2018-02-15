@@ -8,14 +8,18 @@ import * as actions from '../actions/listingActions.js'
 class App extends Component {
   componentDidMount() {
     if (this.props.listings.length === 0) {
-      this.props.actions.fetchListings()
+      this.props.actions.fetchAllListings()
+    }
+    if (this.props.featured.length === 0) {
+      this.props.actions.fetchFeaturedListings()
     }
   }
   render() {
     return (
       <div className="App">
         <Routes />
-        <HomePage listings={this.props.listings} />
+        <h1> Featured Listings </h1>
+        <HomePage listings={this.props.featured} />
       </div>
     );
   }
@@ -23,7 +27,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { listings: state.listings.listings };
+  return { listings: state.listings.listings, featured: state.listings.featuredListings};
 };
 
 function mapDispatchToProps(dispatch) {
