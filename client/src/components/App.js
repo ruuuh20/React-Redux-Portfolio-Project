@@ -16,7 +16,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="container-fluid">
         <Routes />
         <h1> Featured Listings </h1>
         <HomePage listings={this.props.featured} />

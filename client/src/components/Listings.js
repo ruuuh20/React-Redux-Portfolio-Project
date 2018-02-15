@@ -5,8 +5,8 @@ const Listings = (props) => {
   const listings = props.listings
 
   return (
-    <div>
-    {listings.map(listing => <Listing listing = {listing} />)}
+    <div className="scrolling-wrapper-flexbox">
+      {listings.map(listing => <Listing listing = {listing} />)}
     </div>
   )
 }
