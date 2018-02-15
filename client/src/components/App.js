@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         <Routes />
-        <p>HELLO WORLD</p>
+        <HomePage listings={this.props.listings} />
       </div>
     );
   }
@@ -23,7 +23,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { listings: state.listings };
+  return { listings: state.listings.listings };
 };
 
 function mapDispatchToProps(dispatch) {
