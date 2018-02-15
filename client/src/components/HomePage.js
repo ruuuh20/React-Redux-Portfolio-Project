@@ -1,12 +1,14 @@
 import React from 'react'
-import Listings from './Listings'
+import FeaturedListing from './FeaturedListing'
 
 const HomePage = (props) => {
   const listings = props.listings
 
   return (
     <div>
-      <Listings listings = {listings} />
+      <div className="scrolling-wrapper-flexbox">
+        {listings.map(listing => <FeaturedListing listing = {listing} />)}
+      </div>
     </div>
   )
 }
