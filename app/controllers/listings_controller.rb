@@ -10,8 +10,12 @@ class ListingsController < ApplicationController
   end
 
   def index
-    listings = Listing.all
-    render json: listings
+    q = params[:q].capitalize
+    if q.length === 0
+      render json: []
+    else
+      render json: Listing.where(["neighborhood = ?" , q])
+    end
   end
 
 end
