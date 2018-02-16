@@ -14,3 +14,13 @@ export function fetchAllListings() {
         .then(response => response.json())
         .then(listings => dispatch({ type: 'FETCH_FEATURED_LISTINGS', payload: listings }));
     }};
+
+    export function fetchListing(listingId) {
+      return (dispatch) => {
+        dispatch({type: 'LOADING_SINGLE_LISTING'});
+        var url = `http://localhost:3001/listings/${listingId}`
+        return fetch(url)
+        .then(response => response.json())
+        .then(listing => dispatch( {type: 'FETCH_SINGLE_LISTING', payload: listing}))
+      }
+    }
