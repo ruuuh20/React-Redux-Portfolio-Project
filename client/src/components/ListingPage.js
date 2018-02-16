@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/listingActions.js'
+import ListingFullDetails from './ListingFullDetails'
 
 class ListingPage extends Component {
 
@@ -13,7 +14,7 @@ class ListingPage extends Component {
   render() {
     return (
       <div>
-        {this.props.listing.address}
+        <ListingFullDetails />
       </div>
     );
   }
