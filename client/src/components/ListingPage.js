@@ -14,7 +14,7 @@ class ListingPage extends Component {
   render() {
     return (
       <div>
-        <ListingFullDetails />
+        <ListingFullDetails listing={this.props.listing}/>
       </div>
     );
   }

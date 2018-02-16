@@ -5,7 +5,7 @@ const ListingFullDetails = ({listing}) => {
 
   return (
     <div>
-      Hello World
+      {listing.address}
     </div>
 )}
 
