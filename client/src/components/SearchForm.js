@@ -31,7 +31,7 @@ class SearchForm extends Component {
           value = {this.state.searchValue}
           onChange = {this.handleSearchChange}
         />
-        <SearchPage listings={this.state.filteredListings} />
+        
       </div>
     );
   }

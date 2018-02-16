@@ -1,13 +1,12 @@
 import React from 'react'
-import FeaturedListing from './FeaturedListing'
+import SearchForm from './SearchForm'
 
 const SearchPage = (props) => {
-  const listings = props.listings
 
   return (
     <div>
       <div className="scrolling-wrapper-flexbox">
-        {listings.map(listing => <FeaturedListing listing = {listing} />)}
+        <SearchForm />
       </div>
     </div>
   )

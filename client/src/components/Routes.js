@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
 import SearchPage from './SearchPage';
+import ListingPage from './ListingPage'
 
 const Routes = (props) =>
   <Router>
@@ -9,8 +10,9 @@ const Routes = (props) =>
         <NavLink style={{ marginRight: '10px' }} to="/search">Search Listings</NavLink>
         <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
       </div>
-      <Route path="/" render={() => <h3>Welcome to the NYC Apartment Search App</h3>} />
+      <Route path="/" component={HomePage} render={() => <h3>Welcome to the NYC Apartment Search App</h3>} />
       <Route path="/search" component={SearchPage} />
+    
     </div>
   </Router>;
 

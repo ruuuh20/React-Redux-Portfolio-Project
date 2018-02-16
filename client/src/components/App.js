@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
-import Routes from './Routes'
-import HomePage from './HomePage'
+import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/listingActions.js'
-import SearchForm from './SearchForm'
+import HomePage from './HomePage'
+import ListingPage from './ListingPage'
+import SearchPage from './SearchPage'
 
 class App extends Component {
 
   componentDidMount() {
-    if (this.props.listings.length === 0) {
-      this.props.actions.fetchAllListings()
-    }
     if (this.props.featured.length === 0) {
       this.props.actions.fetchFeaturedListings()
+    }
+    if (this.props.allListings.length === 0) {
+      this.props.actions.fetchAllListings()
     }
   }
   render() {
     return (
-      <div className="container-fluid">
-        <Routes />
-        <h1> Featured Listings </h1>
-        <HomePage listings={this.props.featured} />
-        <SearchForm />
+      <div>
+        <Router>
+          <div>
+            <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
+              <NavLink style={{ marginRight: '10px' }} to="/search">Search Listings</NavLink>
+              <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
+            </div>
+            <Route exact path="/" render={() => <HomePage listings={this.props.featured} />} />
+            <Route exact path="/search" component={SearchPage} />
+            <Route path={`/listings/:listingId`} component={ListingPage} />
+          </div>
+        </Router>
+        <div className="container-fluid">
+
+
+        </div>
       </div>
     );
   }
@@ -30,7 +42,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { listings: state.listings.listings, featured: state.listings.featuredListings};
+  return { featured: state.listings.featuredListings, allListings: state.listings.listings};
 };
 
 function mapDispatchToProps(dispatch) {
