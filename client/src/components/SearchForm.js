@@ -7,13 +7,13 @@ class SearchForm extends Component {
     super()
     this.state = {
       filteredListings: [],
-      searchValue: ''
+      neighborhood: ''
     }
   }
 
   handleSearchChange = (event) => {
-    let value = event.target.value
-    this.setState({searchValue: value})
+    const { name, value } = event.target;
+    this.setState({[name]: value})
 
     Client.search(value, (listings) => {
       this.setState({
@@ -28,6 +28,7 @@ class SearchForm extends Component {
         <div className="container-fluid">
           <input
             type = "text"
+            name = "neighborhood"
             placeholder = "search neighborhood..."
             value = {this.state.searchValue}
             onChange = {this.handleSearchChange}
