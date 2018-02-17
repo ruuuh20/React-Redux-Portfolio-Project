@@ -10,15 +10,20 @@ class ListingsController < ApplicationController
   end
 
   def index
-    if params[:neighborhood]
-      q = params[:neighborhood].split(" ").map{|w| w.capitalize}.join(" ")
-      if q.length === 0
-        render json: []
-      else
-        render json: Listing.where({:neighborhood => q})
-      end
-    else
+    if params[:all]
       render json: Listing.all
+    else
+      if params[:neighborhood]
+        params[:neighborhood] = params[:neighborhood].split(" ").map{|w| w.capitalize}.join(" ")
+      end
+      query = {}
+      params.keys.each do |key|
+        if key != "controller" && key!= "action"
+          query[key] = params[key]
+        end
+      end
+      raise.params.inspect
+      render json: Listing.where(query)
     end
   end
 
