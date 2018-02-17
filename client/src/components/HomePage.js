@@ -6,8 +6,8 @@ const HomePage = (props) => {
 
   return (
     <div>
+      <h1> Featured Listings </h1>
       <div className="scrolling-wrapper-flexbox">
-        <h1> Featured Listings </h1>
         {listings.map(listing => <FeaturedListing listing = {listing} />)}
       </div>
     </div>
