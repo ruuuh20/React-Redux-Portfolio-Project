@@ -13,16 +13,13 @@ class ListingsController < ApplicationController
     if params[:all]
       render json: Listing.all
     else
-      if params[:neighborhood]
-        params[:neighborhood] = params[:neighborhood].split(" ").map{|w| w.capitalize}.join(" ")
-      end
       query = {}
-      params.keys.each do |key|
-        if key != "controller" && key!= "action"
-          query[key] = params[key]
-        end
+      if params[:neighborhood]
+        query[:neighborhood] = params[:neighborhood].split(" ").map{|w| w.capitalize}.join(" ")
       end
-      raise.params.inspect
+      query[:beds] = params[:beds] if params[:beds]
+      query[:baths] = params[:baths] if params[:baths]
+      query[:listing_price] = (params[:minRent].to_i..(params[:maxRent]? params[:maxRent].to_i : Float::INFINITY))
       render json: Listing.where(query)
     end
   end

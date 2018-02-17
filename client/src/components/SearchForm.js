@@ -7,7 +7,11 @@ class SearchForm extends Component {
     super()
     this.state = {
       filteredListings: [],
-      neighborhood: ''
+      neighborhood: '',
+      minRent: 0,
+      maxRent: '',
+      beds: '',
+      baths: ''
     }
   }
 
@@ -29,19 +33,56 @@ class SearchForm extends Component {
     return (
       <div>
         <div className="container-fluid">
-          <input
-            type = "text"
-            name = "neighborhood"
-            placeholder = "search neighborhood..."
-            value = {this.state.searchValue}
-            onChange = {this.handleSearchChange}
-          />
+          <div className="row">
+              <input
+                type = "text"
+                name = "neighborhood"
+                placeholder = "search neighborhood..."
+                value = {this.state.neighborhood}
+                onChange = {this.handleSearchChange}
+              />
+              <input
+                type = "text"
+                name = "minRent"
+                placeholder = "0"
+                value = {this.state.minRent}
+                onChange = {this.handleSearchChange}
+              />
+              <input
+                type = "text"
+                name = "maxRent"
+                placeholder = "0"
+                value = {this.state.maxRent}
+                onChange = {this.handleSearchChange}
+              />
+              <input
+                type = "text"
+                name = "beds"
+                placeholder = "0"
+                value = {this.state.beds}
+                onChange = {this.handleSearchChange}
+              />
+              <input
+                type = "text"
+                name = "baths"
+                placeholder = "0"
+                value = {this.state.baths}
+                onChange = {this.handleSearchChange}
+              />
+              <input
+                type = "submit"
+                value = "search"
+                onClick = {this.handleFormSubmit}
+              />
+          </div>
+          <div className="row">
+            <label htmlFor="neighborhood">Search by Neighborhood</label>
+            <label htmlFor="minRent">Min Rent</label>
+            <label htmlFor="maxRent">Max Rent</label>
+            <label htmlFor="beds">Bedrooms</label>
+            <label htmlFor="baths">Bathrooms</label>
+          </div>
         </div>
-        <input
-          type = "submit"
-          value = "search"
-          onClick = {this.handleFormSubmit}
-        />
         <SearchResults listings={this.state.filteredListings} />
       </div>
     );
