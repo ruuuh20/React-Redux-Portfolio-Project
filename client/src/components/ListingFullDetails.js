@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ViewingRequest from './ViewingRequest.js'
 
 
 class ListingFullDetails extends Component {
@@ -6,7 +7,8 @@ class ListingFullDetails extends Component {
     super()
     this.state = {
       mainImg: "",
-      allImages: []
+      allImages: [],
+      requestViewingOn: false
     }
   }
 
@@ -23,9 +25,19 @@ class ListingFullDetails extends Component {
     })
   }
 
+  handleViewingForm(){
+    this.setState({
+      requestViewingOn: true
+    })
+  }
+
 
   render(){
   const listing = this.props.listing
+  let viewingForm = null
+  if (this.state.requestViewingOn) {
+    viewingForm = <ViewingRequest />
+  }
   return (
     <div className="container-fluid">
       <div className="row">
@@ -38,7 +50,7 @@ class ListingFullDetails extends Component {
                 src={image}
                 style={this.state.mainImg===image? {opacity: 1} : {}}
                 alt={listing.address}
-                onClick={(event) => {
+                onClick={() => {
                   this.handleImageChange(image);
                 }}
               />)}
@@ -59,7 +71,13 @@ class ListingFullDetails extends Component {
               <h4 className="listing-detail">{listing.neighborhood}</h4>
               <h5 className="listing-detail">{listing.listing_price_formatted}</h5>
               <h6 className="listing-detail">{listing.beds} {listing.beds===1? "bed" : "beds"} / {listing.baths} {listing.baths===1? "bath" : "baths"}</h6>
-              <button type="button" className="btn viewing-button btn-secondary">Request Viewing</button>
+              <button
+                type="button"
+                className="btn viewing-button btn-secondary"
+                onClick={() => {
+                  this.handleViewingForm();
+                }}>Request Viewing</button>
+              {viewingForm}
             </div>
           </div>
         </div>
