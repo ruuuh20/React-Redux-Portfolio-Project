@@ -5,13 +5,15 @@ class ListingFullDetails extends Component {
   constructor(){
     super()
     this.state = {
-      mainImg: ""
+      mainImg: "",
+      allImages: []
     }
   }
 
   componentWillReceiveProps(nextProps) {
   this.setState({
-    mainImg: nextProps.listing.main_img
+    mainImg: nextProps.listing.main_img,
+    allImages: nextProps.listing.images.map(image => image.source)
   })
 }
 
@@ -23,6 +25,10 @@ class ListingFullDetails extends Component {
       <div className="row">
         <div className= "col-6 images-column">
           <img className="main-img img-fluid" src={this.state.mainImg} alt={listing.address}/>
+          <div className="row thumbnails-row scrolling-wrapper-flexbox">
+            {this.state.allImages.map(image =>
+              <img className="thumbnail-image" src={image} alt={listing.address}/>)}
+          </div>
         </div>
 
         <div className="col-4">
