@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 
 
 class ListingFullDetails extends Component {
+  constructor(){
+    super()
+    this.state = {
+      mainImg: ""
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+  this.setState({
+    mainImg: nextProps.listing.main_img
+  })
+}
 
 
   render(){
@@ -10,7 +22,7 @@ class ListingFullDetails extends Component {
     <div className="container-fluid">
       <div className="row">
         <div className= "col-6 images-column">
-          <img className="main-img img-fluid" src={listing.main_img} alt={listing.address}/>
+          <img className="main-img img-fluid" src={this.state.mainImg} alt={listing.address}/>
         </div>
 
         <div className="col-4">
