@@ -8,7 +8,7 @@ class SearchForm extends Component {
     this.state = {
       filteredListings: [],
       neighborhood: '',
-      minRent: 0,
+      minRent: '',
       maxRent: '',
       beds: '',
       baths: ''
@@ -44,14 +44,14 @@ class SearchForm extends Component {
               <input
                 type = "text"
                 name = "minRent"
-                placeholder = "0"
+                placeholder = "no min"
                 value = {this.state.minRent}
                 onChange = {this.handleSearchChange}
               />
               <input
                 type = "text"
                 name = "maxRent"
-                placeholder = "0"
+                placeholder = "no max"
                 value = {this.state.maxRent}
                 onChange = {this.handleSearchChange}
               />

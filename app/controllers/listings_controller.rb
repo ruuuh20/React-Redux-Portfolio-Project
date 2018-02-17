@@ -18,7 +18,7 @@ class ListingsController < ApplicationController
         query[:neighborhood] = params[:neighborhood].split(" ").map{|w| w.capitalize}.join(" ")
       end
       query[:beds] = params[:beds] if params[:beds]
-      query[:baths] = params[:baths] if params[:baths]
+      query[:baths] = (params[:baths].to_i..Float::INFINITY) if params[:baths]
       query[:listing_price] = (params[:minRent].to_i..(params[:maxRent]? params[:maxRent].to_i : Float::INFINITY))
       render json: Listing.where(query)
     end
