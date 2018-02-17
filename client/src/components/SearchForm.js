@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Client from './Client'
-import SearchPage from './SearchPage'
+import SearchResults from './SearchResults'
 
 class SearchForm extends Component {
   constructor() {
@@ -31,7 +31,7 @@ class SearchForm extends Component {
           value = {this.state.searchValue}
           onChange = {this.handleSearchChange}
         />
-        
+        <SearchResults listings={this.state.filteredListings} />
       </div>
     );
   }
