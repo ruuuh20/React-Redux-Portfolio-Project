@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react';
 
 
-const ListingFullDetails = ({listing}) => {
+class ListingFullDetails extends Component {
 
+
+  render(){
+  const listing = this.props.listing
   return (
     <div className="container-fluid">
       <div className="row">
@@ -25,7 +28,7 @@ const ListingFullDetails = ({listing}) => {
       </div>
 
     </div>
-)}
+)}}
 
 
 export default ListingFullDetails
