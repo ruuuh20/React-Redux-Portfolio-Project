@@ -43,6 +43,13 @@ class ListingFullDetails extends Component {
                 }}
               />)}
           </div>
+          <div className="row thumbnails-row">
+            <div className="summary-header">
+              <h4 className="listing-detail">Summary</h4>
+            </div>
+            <p>{listing.description}</p>
+
+          </div>
         </div>
 
         <div className="col-4">
