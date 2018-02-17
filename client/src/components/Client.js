@@ -1,6 +1,14 @@
 import fetch from 'isomorphic-fetch';
 function search(state, returnResults) {
-  let query = `neighborhood=${state.neighborhood}`
+  let query = []
+  Object.keys(state).forEach(function(key){
+    if (state[key] !== "" && key !== "filteredListings") {
+      let filter = `${key}=${state[key]}`
+      query.push(filter)
+    }
+  })
+  query = query.join("&")
+  console.log(query)
   return fetch(`http://localhost:3001/listings?${query}`)
     .then(response => response.json())
     .then(returnResults);
