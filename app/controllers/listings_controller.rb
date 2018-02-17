@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
 
   def index
     if params[:q]
-      q = params[:q].capitalize
+      q = params[:q].split(" ").map{|w| w.capitalize}.join(" ")
       if q.length === 0
         render json: []
       else
