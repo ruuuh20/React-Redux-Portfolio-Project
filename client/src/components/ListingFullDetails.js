@@ -17,6 +17,12 @@ class ListingFullDetails extends Component {
   })
 }
 
+  handleImageChange(image) {
+    this.setState({
+      mainImg: image
+    })
+  }
+
 
   render(){
   const listing = this.props.listing
@@ -27,7 +33,12 @@ class ListingFullDetails extends Component {
           <img className="main-img img-fluid" src={this.state.mainImg} alt={listing.address}/>
           <div className="row thumbnails-row scrolling-wrapper-flexbox">
             {this.state.allImages.map(image =>
-              <img className="thumbnail-image" src={image} alt={listing.address}/>)}
+              <img
+                className="thumbnail-image"
+                src={image}
+                alt={listing.address}
+                onClick={() => { this.handleImageChange(image) }}
+              />)}
           </div>
         </div>
 
