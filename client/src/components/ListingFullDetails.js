@@ -36,8 +36,11 @@ class ListingFullDetails extends Component {
               <img
                 className="thumbnail-image"
                 src={image}
+                style={this.state.mainImg===image? {opacity: 1} : {}}
                 alt={listing.address}
-                onClick={() => { this.handleImageChange(image) }}
+                onClick={(event) => {
+                  this.handleImageChange(image);
+                }}
               />)}
           </div>
         </div>
