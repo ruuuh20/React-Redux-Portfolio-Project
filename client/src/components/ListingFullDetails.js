@@ -36,8 +36,10 @@ class ListingFullDetails extends Component {
   const listing = this.props.listing
   let viewingForm = null
   if (this.state.requestViewingOn) {
-    viewingForm = <ViewingRequest />
+    viewingForm = <ViewingRequest address={listing.address}/>
   }
+  else {viewingForm = <button type="button" className="btn viewing-button btn-secondary"
+            onClick={(event) => {this.handleViewingForm();}}>Request Viewing</button>}
   return (
     <div className="container-fluid">
       <div className="row">
@@ -71,12 +73,6 @@ class ListingFullDetails extends Component {
               <h4 className="listing-detail">{listing.neighborhood}</h4>
               <h5 className="listing-detail">{listing.listing_price_formatted}</h5>
               <h6 className="listing-detail">{listing.beds} {listing.beds===1? "bed" : "beds"} / {listing.baths} {listing.baths===1? "bath" : "baths"}</h6>
-              <button
-                type="button"
-                className="btn viewing-button btn-secondary"
-                onClick={() => {
-                  this.handleViewingForm();
-                }}>Request Viewing</button>
               {viewingForm}
             </div>
           </div>
