@@ -3,8 +3,10 @@ import FilteredListing from './FilteredListing'
 
 const SearchResults = ({listings}) => {
   return (
-    <div className="container-fluid search-results">
-      {listings.map(listing => <FilteredListing listing = {listing} />)}
+    <div>
+      <div className="search-results">
+        {listings.map(listing => <FilteredListing listing = {listing} />)}
+      </div>
     </div>
   )
 }

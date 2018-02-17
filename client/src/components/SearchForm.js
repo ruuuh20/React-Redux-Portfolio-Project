@@ -24,13 +24,15 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <input
-          type = "text"
-          placeholder = "search neighborhood..."
-          value = {this.state.searchValue}
-          onChange = {this.handleSearchChange}
-        />
+      <div>
+        <div className="container-fluid">
+          <input
+            type = "text"
+            placeholder = "search neighborhood..."
+            value = {this.state.searchValue}
+            onChange = {this.handleSearchChange}
+          />
+        </div>
         <SearchResults listings={this.state.filteredListings} />
       </div>
     );
