@@ -32,58 +32,72 @@ class SearchForm extends Component {
   render() {
     return (
       <div>
-        <div className="container-fluid">
-          <div className="row">
-              <input
-                type = "text"
-                name = "neighborhood"
-                placeholder = "search neighborhood..."
-                value = {this.state.neighborhood}
-                onChange = {this.handleSearchChange}
-              />
-              <input
-                type = "text"
-                name = "minRent"
-                placeholder = "no min"
-                value = {this.state.minRent}
-                onChange = {this.handleSearchChange}
-              />
-              <input
-                type = "text"
-                name = "maxRent"
-                placeholder = "no max"
-                value = {this.state.maxRent}
-                onChange = {this.handleSearchChange}
-              />
-              <input
-                type = "text"
-                name = "beds"
-                placeholder = "0"
-                value = {this.state.beds}
-                onChange = {this.handleSearchChange}
-              />
-              <input
-                type = "text"
-                name = "baths"
-                placeholder = "0"
-                value = {this.state.baths}
-                onChange = {this.handleSearchChange}
-              />
-              <input
-                type = "submit"
-                value = "search"
-                onClick = {this.handleFormSubmit}
-              />
+        <div className="container-fluid row">
+          <div className="col-4">
+            <form onSubmit = {this.handleFormSubmit}>
+              <div className="form-group">
+                <label htmlFor="neighborhood">Search by Neighborhood</label>
+                <input
+                  type = "text"
+                  name = "neighborhood"
+                  placeholder = "search neighborhood..."
+                  value = {this.state.neighborhood}
+                  onChange = {this.handleSearchChange}
+                  className="form-control"
+                />
+                <small id="emailHelp" class="form-text text-muted">Search by any NYC neighborhood</small>
+              </div>
+              <div className="form-group">
+                <label htmlFor="minRent">Min Rent</label>
+                <input
+                  type = "text"
+                  name = "minRent"
+                  placeholder = "no min"
+                  value = {this.state.minRent}
+                  onChange = {this.handleSearchChange}
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="maxRent">Max Rent</label>
+                <input
+                  type = "text"
+                  name = "maxRent"
+                  placeholder = "no max"
+                  value = {this.state.maxRent}
+                  onChange = {this.handleSearchChange}
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="beds">Bedrooms</label>
+                <input
+                  type = "text"
+                  name = "beds"
+                  placeholder = "0"
+                  value = {this.state.beds}
+                  onChange = {this.handleSearchChange}
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+              <label htmlFor="baths">Bathrooms</label>
+                <input
+                  type = "text"
+                  name = "baths"
+                  placeholder = "0"
+                  value = {this.state.baths}
+                  onChange = {this.handleSearchChange}
+                  className="form-control"
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">Search</button>
+              </form>
+            </div>
+            <div className="col-8">
+              <SearchResults listings={this.state.filteredListings} />
+            </div>
           </div>
-          <div className="row">
-            <label htmlFor="neighborhood">Search by Neighborhood</label>
-            <label htmlFor="minRent">Min Rent</label>
-            <label htmlFor="maxRent">Max Rent</label>
-            <label htmlFor="beds">Bedrooms</label>
-            <label htmlFor="baths">Bathrooms</label>
-          </div>
-        </div>
-        <SearchResults listings={this.state.filteredListings} />
       </div>
     );
   }
