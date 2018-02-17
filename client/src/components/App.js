@@ -13,9 +13,6 @@ class App extends Component {
     if (this.props.featured.length === 0) {
       this.props.actions.fetchFeaturedListings()
     }
-    if (this.props.allListings.length === 0) {
-      this.props.actions.fetchAllListings()
-    }
   }
   render() {
     return (
@@ -42,7 +39,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { featured: state.listings.featuredListings, allListings: state.listings.listings};
+  return { featured: state.listings.featuredListings};
 };
 
 function mapDispatchToProps(dispatch) {
