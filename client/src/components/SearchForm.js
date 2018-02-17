@@ -14,13 +14,16 @@ class SearchForm extends Component {
   handleSearchChange = (event) => {
     const { name, value } = event.target;
     this.setState({[name]: value})
+  }
 
-    Client.search(value, (listings) => {
+  handleFormSubmit = event => {
+    event.preventDefault();
+    Client.search(this.state, (listings) => {
       this.setState({
         filteredListings: listings
       });
     });
-  }
+  };
 
   render() {
     return (
@@ -34,6 +37,11 @@ class SearchForm extends Component {
             onChange = {this.handleSearchChange}
           />
         </div>
+        <input
+          type = "submit"
+          value = "search"
+          onClick = {this.handleFormSubmit}
+        />
         <SearchResults listings={this.state.filteredListings} />
       </div>
     );

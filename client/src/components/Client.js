@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
-function search(query, returnResults) {
-  console.log(query)
-  return fetch(`http://localhost:3001/listings?q=${query}`)
+function search(state, returnResults) {
+  let query = `neighborhood=${state.neighborhood}`
+  return fetch(`http://localhost:3001/listings?${query}`)
     .then(response => response.json())
     .then(returnResults);
 }
