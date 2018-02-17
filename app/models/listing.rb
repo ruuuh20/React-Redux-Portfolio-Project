@@ -17,5 +17,14 @@ class Listing < ApplicationRecord
     price.join("")
   end
 
+  def all_image_sources
+    all_images = []
+    all_images.push(self.main_img)
+    self.images.each do |image|
+      all_images.push(image.source)
+    end
+    all_images
+  end
+
 
 end

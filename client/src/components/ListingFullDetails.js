@@ -13,7 +13,7 @@ class ListingFullDetails extends Component {
   componentWillReceiveProps(nextProps) {
   this.setState({
     mainImg: nextProps.listing.main_img,
-    allImages: nextProps.listing.images.map(image => image.source)
+      allImages: nextProps.listing.all_image_sources
   })
 }
 
