@@ -15,7 +15,7 @@ class ListingsController < ApplicationController
       if q.length === 0
         render json: []
       else
-        render json: Listing.where(["neighborhood = ?" , q])
+        render json: Listing.where({:neighborhood => q})
       end
     else
       render json: Listing.all
