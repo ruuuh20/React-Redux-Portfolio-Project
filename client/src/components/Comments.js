@@ -11,12 +11,21 @@ class Comments extends React.Component {
     super();
 
     this.state = {
+      listingId: "",
+      listingComments: [],
       name: "",
       email: "",
       content: "",
       posted: false
 
     };
+  }
+
+  componentWillReceiveProps(props){
+    this.setState({
+      listingId: props.listingId,
+      listingComments: props.listingComments
+    })
   }
 
   handleInputChange = event => {
@@ -31,7 +40,7 @@ class Comments extends React.Component {
     this.setState({
       posted: true
     })
-    this.props.actions.createComment(this.props.listing.id, this.state)
+    this.props.actions.createComment(this.state.listing.id, this.state)
 
   };
 
@@ -39,11 +48,11 @@ class Comments extends React.Component {
     const form = <CommentForm comment = {this.state}
           handleFormSubmit = {this.handleFormSubmit}
           handleInputChange = {this.handleInputChange}/>
-    const comments = this.props.listing.comments.map(comment => <CommentView comment = {comment} />)
+    const comments = this.state.listingComments.map(comment => <CommentView comment = {comment} />)
     return (
       <div>
+        {comments}
         {form}
-
       </div>
 
     );

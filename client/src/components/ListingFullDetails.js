@@ -75,7 +75,7 @@ class ListingFullDetails extends Component {
               <h5 className="listing-detail">{listing.listing_price_formatted}</h5>
               <h6 className="listing-detail">{listing.beds} {listing.beds===1? "bed" : "beds"} / {listing.baths} {listing.baths===1? "bath" : "baths"}</h6>
               {viewingForm}
-              <Comments listing={listing} />
+              <Comments listingId={listing.id} listingComments={listing.comments} />
             </div>
           </div>
         </div>
