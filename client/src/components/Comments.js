@@ -4,14 +4,15 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/commentActions.js'
 
-class CommentsForm extends React.Component {
+class Comments extends React.Component {
   constructor() {
     super();
 
     this.state = {
       name: "",
       email: "",
-      content: ""
+      content: "",
+      posted: false
 
     };
   }
@@ -74,7 +75,7 @@ class CommentsForm extends React.Component {
   }
 }
 
-CommentsForm.propTypes = {
+Comments.propTypes = {
   onSubmit: PropTypes.func,
 };
 
@@ -82,4 +83,4 @@ function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-export default connect(null, mapDispatchToProps)(CommentsForm)
+export default connect(null, mapDispatchToProps)(Comments)
