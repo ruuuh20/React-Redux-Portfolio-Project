@@ -33,7 +33,7 @@ class ListingFullDetails extends Component {
       requestViewingOn: true
     })
   }
-  
+
   render(){
   const listing = this.props.listing
   let viewingForm = null
@@ -51,6 +51,7 @@ class ListingFullDetails extends Component {
           <div className="row thumbnails-row scrolling-wrapper-flexbox">
             {this.state.allImages.map(image =>
               <img
+                key={image.id}
                 className="thumbnail-image"
                 src={image}
                 style={this.state.mainImg===image? {opacity: 1} : {}}

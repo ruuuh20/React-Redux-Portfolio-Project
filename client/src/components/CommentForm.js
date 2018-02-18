@@ -7,7 +7,7 @@ const CommentForm = (props) => {
     <br />
     <form onSubmit={props.handleFormSubmit.bind(this)}>
       <div className="form-group">
-        <label forHtml="name">name</label>
+        <label forhtml="name">name</label>
         <input
           id="name"
           type="text"
@@ -18,7 +18,7 @@ const CommentForm = (props) => {
         />
       </div>
       <div className="form-group">
-        <label forHtml="email">email</label>
+        <label forhtml="email">email</label>
         <input
           id="email"
           type="text"
@@ -29,7 +29,7 @@ const CommentForm = (props) => {
         />
       </div>
       <div className="form-group">
-        <label forHtml="email">comment</label>
+        <label forhtml="email">comment</label>
         <textarea
           id="content"
           type="text"
