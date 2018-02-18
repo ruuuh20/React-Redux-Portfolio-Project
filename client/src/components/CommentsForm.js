@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/commentActions.js'
 
 class CommentsForm extends React.Component {
   constructor() {
@@ -8,7 +11,7 @@ class CommentsForm extends React.Component {
     this.state = {
       name: "",
       email: "",
-      content: "",
+      content: ""
 
     };
   }
@@ -22,13 +25,14 @@ class CommentsForm extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.setState({confirmation: true})
+    this.props.actions.createComment(this.props.listing.id, this.state)
+
   };
 
   render() {
     return (
       <div className="comment-box">
-      <form onSubmit={this.handleFormSubmit}>
+      <form onSubmit={this.handleFormSubmit.bind(this)}>
         <div className="form-group">
           <label forHtml="name">name</label>
           <input
@@ -74,4 +78,8 @@ CommentsForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-export default CommentsForm;
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+export default connect(null, mapDispatchToProps)(CommentsForm)

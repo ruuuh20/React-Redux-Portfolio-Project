@@ -1,12 +1,15 @@
 class CommentsController < ApplicationController
   def create
-    comment = params[:comment]
-    listing_id = params[:listingId]
-    comment = Comment.new(comment)
-    comment.listing_id = listing_id
+    comment = Comment.new(comment_params)
     if comment.save
       render json: comment
     end
   end
+
+
+  def comment_params
+   params.require(:comment).permit(:listing_id, :author, :email, :content)
+ end
+
 
 end

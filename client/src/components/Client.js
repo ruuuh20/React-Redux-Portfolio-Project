@@ -16,5 +16,22 @@ function search(state, returnResults) {
     .then(returnResults);
 }
 
-const Client = { search };
+function createComment(listingId, comment){
+  console.log("we are in createComment function of Client.js where we will post to the API")
+  return fetch('http://localhost:3001/comments', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    listing_id: listingId,
+    author: comment.name,
+    email: comment.email,
+    content: comment.content
+    })
+  })
+  }
+
+const Client = { search, createComment };
 export default Client;
