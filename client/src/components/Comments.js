@@ -27,18 +27,21 @@ class Comments extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    this.setState({
+      posted: true
+    })
     this.props.actions.createComment(this.props.listing.id, this.state)
 
   };
 
   render() {
+    const form = <CommentForm comment = {this.state}
+          handleFormSubmit = {this.handleFormSubmit}
+          handleInputChange = {this.handleInputChange}/>
     return (
       <div>
-        <CommentForm
-          comment = {this.state}
-          handleFormSubmit = {this.handleFormSubmit}
-          handleInputChange = {this.handleInputChange}
-        />
+        {form}
+
       </div>
 
     );
