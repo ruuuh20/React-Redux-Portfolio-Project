@@ -2,7 +2,7 @@ import React from 'react';
 
 const FilteredListing = ({listing}) => {
   return (
-    <div className="row filtered-listing">
+    <a className="row filtered-listing"href={`/listings/${listing.id}`}>
       <div className="col-6 filtered-listing-img">
         <img className="img-fluid" src={listing.main_img} alt={listing.address}/>
       </div>
@@ -12,7 +12,7 @@ const FilteredListing = ({listing}) => {
         <p>{listing.listing_price_formatted}</p>
         <p>{listing.beds} {listing.beds===1? "bed" : "beds"} / {listing.baths} {listing.baths===1? "bath" : "baths"}</p>
       </div>
-    </div>
+    </a>
   )
 }
 
