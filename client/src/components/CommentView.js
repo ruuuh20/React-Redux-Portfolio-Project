@@ -2,10 +2,11 @@ import React from 'react';
 
 const CommentView = ({comment}) => {
   return (
-    <div>
-      <p>{comment.author}</p>
+    <div className="comment">
+      <small>{comment.author}</small>
+      <small>{comment.created_at}</small>
       <p>{comment.content}</p>
-      <p>{comment.created_at}</p>
+
     </div>
   )
 }

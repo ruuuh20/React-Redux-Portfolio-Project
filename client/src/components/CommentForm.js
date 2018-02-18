@@ -3,6 +3,8 @@ import React from 'react';
 const CommentForm = (props) => {
   return (
     <div className="comment-box">
+    <small>Seen this place? Help out your fellow hunters and leave a comment below!</small>
+    <br />
     <form onSubmit={props.handleFormSubmit.bind(this)}>
       <div className="form-group">
         <label forHtml="name">name</label>

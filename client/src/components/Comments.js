@@ -50,7 +50,8 @@ class Comments extends React.Component {
           handleInputChange = {this.handleInputChange}/>
     const comments = this.state.listingComments.map(comment => <CommentView comment = {comment} />)
     return (
-      <div>
+      <div className="comments-section">
+        <p className="comments-title">Listing Comments</p>
         {comments}
         {form}
       </div>
