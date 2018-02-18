@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :listings
 
-  resorces :comments, only: [:create]
+  resources :comments, only: [:create]
 end
