@@ -27,7 +27,7 @@ function createComment(listingId, comment){
   body: JSON.stringify({
     listing_id: listingId,
     author: comment.name,
-    email: comment.email,
+    author_email: comment.email,
     content: comment.content
     })
   })

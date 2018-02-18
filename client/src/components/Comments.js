@@ -27,7 +27,7 @@ class Comments extends React.Component {
       listingComments: props.listingComments
     })
   }
-
+  
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -37,15 +37,17 @@ class Comments extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    this.props.actions.createComment(this.state.listingId, this.state)
     this.setState({
-      posted: true
+      posted: true,
+      listingComments: this.props.listingComments
     })
-    this.props.actions.createComment(this.state.listing.id, this.state)
-
   };
 
   render() {
-    const form = <CommentForm comment = {this.state}
+    let form
+    this.state.posted? form = null
+    :form = <CommentForm comment = {this.state}
           handleFormSubmit = {this.handleFormSubmit}
           handleInputChange = {this.handleInputChange}/>
     const comments = this.state.listingComments.map(comment => <CommentView comment = {comment} />)
