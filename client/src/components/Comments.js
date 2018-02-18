@@ -39,6 +39,7 @@ class Comments extends React.Component {
     const form = <CommentForm comment = {this.state}
           handleFormSubmit = {this.handleFormSubmit}
           handleInputChange = {this.handleInputChange}/>
+    const comments = this.props.listing.comments.map(comment => <CommentView comment = {comment} />)
     return (
       <div>
         {form}

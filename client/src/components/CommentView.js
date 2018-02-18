@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CommentView = (props) => {
+const CommentView = ({comment}) => {
   return (
     <div>
-      <p>{props.comment.author}</p>
-      <p>{props.comment.content}</p>
-      <p>{props.comment.created_at}</p>
+      <p>{comment.author}</p>
+      <p>{comment.content}</p>
+      <p>{comment.created_at}</p>
     </div>
   )
 }
