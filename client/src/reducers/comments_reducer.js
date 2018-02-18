@@ -1,11 +1,13 @@
-export default function commentsReducer(state= {posting: false, comments: []}, action) {
+export default function commentsReducer(state= {posting: false, loading: false, comments: []}, action) {
   switch ( action.type ) {
+    case 'LOADING_COMMENTS':
+      return Object.assign({}, state, {loading: true})
+    case 'FETCH_COMMENTS':
+      return Object.assign({}, state, {loading: false, comments: action.payload})
     case 'CREATING_COMMENT':
-      console.log("we are in the creating comment reducer")
       return Object.assign({}, state, {posting: true})
     case 'CREATE_COMMENT_SUCCESS':
-      console.log("we are in the create comment success reducer")
-      return Object.assign({}, state, {posting: false, comment: action.payload})
+      return Object.assign({}, state, {posting: false, comments: state.comments.concat(action.payload)})
     default:
       return state;
   }

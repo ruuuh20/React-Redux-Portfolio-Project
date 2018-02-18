@@ -7,12 +7,11 @@ import CommentForm from './CommentForm'
 import CommentView from './CommentView'
 
 class Comments extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
-      listingId: "",
-      listingComments: [],
+      listingId: props.listingId,
+      comments: [],
       name: "",
       email: "",
       content: "",
@@ -24,14 +23,19 @@ class Comments extends React.Component {
   componentWillReceiveProps(props){
     this.setState({
       listingId: props.listingId,
-      listingComments: props.listingComments
+      comments: props.comments.reverse()
     })
   }
-  
+
+  componentDidMount(){
+    const listingId = this.state.listingId
+    this.props.actions.fetchComments(listingId)
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -39,8 +43,7 @@ class Comments extends React.Component {
     event.preventDefault();
     this.props.actions.createComment(this.state.listingId, this.state)
     this.setState({
-      posted: true,
-      listingComments: this.props.listingComments
+      posted: true
     })
   };
 
@@ -50,7 +53,7 @@ class Comments extends React.Component {
     :form = <CommentForm comment = {this.state}
           handleFormSubmit = {this.handleFormSubmit}
           handleInputChange = {this.handleInputChange}/>
-    const comments = this.state.listingComments.map(comment => <CommentView comment = {comment} />)
+    const comments = this.state.comments.map(comment => <CommentView comment = {comment} />)
     return (
       <div className="comments-section">
         <p className="comments-title">Listing Comments</p>
@@ -62,12 +65,13 @@ class Comments extends React.Component {
   }
 }
 
-Comments.propTypes = {
-  onSubmit: PropTypes.func,
+
+const mapStateToProps = (state, props) => {
+  return { comments: state.comments.comments, listingId: props.listingId};
 };
 
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-export default connect(null, mapDispatchToProps)(Comments)
+export default connect(mapStateToProps, mapDispatchToProps)(Comments)

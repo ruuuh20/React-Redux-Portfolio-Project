@@ -9,14 +9,16 @@ class ListingFullDetails extends Component {
     this.state = {
       mainImg: "",
       allImages: [],
-      requestViewingOn: false
+      requestViewingOn: false,
+      loading: true
     }
   }
 
   componentWillReceiveProps(nextProps) {
   this.setState({
     mainImg: nextProps.listing.main_img,
-      allImages: nextProps.listing.all_image_sources
+    allImages: nextProps.listing.all_image_sources,
+    loading: false
   })
 }
 
@@ -31,16 +33,16 @@ class ListingFullDetails extends Component {
       requestViewingOn: true
     })
   }
-
-
+  
   render(){
   const listing = this.props.listing
   let viewingForm = null
   if (this.state.requestViewingOn) {
-    viewingForm = <ViewingRequest address={listing.address}/>
-  }
+    viewingForm = <ViewingRequest address={listing.address}/>}
   else {viewingForm = <button type="button" className="btn viewing-button btn-secondary"
             onClick={(event) => {this.handleViewingForm();}}>Request Viewing</button>}
+  let comments = null
+  if (!this.state.loading){comments = <Comments listingId={listing.id}/>}
   return (
     <div className="container-fluid">
       <div className="row">
@@ -63,10 +65,8 @@ class ListingFullDetails extends Component {
               <h4 className="listing-detail">Summary</h4>
             </div>
             <p>{listing.description}</p>
-
           </div>
         </div>
-
         <div className="col-4">
           <div className="row">
             <div className="col-12">
@@ -75,13 +75,11 @@ class ListingFullDetails extends Component {
               <h5 className="listing-detail">{listing.listing_price_formatted}</h5>
               <h6 className="listing-detail">{listing.beds} {listing.beds===1? "bed" : "beds"} / {listing.baths} {listing.baths===1? "bath" : "baths"}</h6>
               {viewingForm}
-              <Comments listingId={listing.id} listingComments={listing.comments} />
+              {comments}
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
 )}}
 
