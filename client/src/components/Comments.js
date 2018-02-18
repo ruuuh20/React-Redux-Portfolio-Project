@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/commentActions.js'
+import CommentForm from './CommentForm'
 
 class Comments extends React.Component {
   constructor() {
@@ -32,45 +33,14 @@ class Comments extends React.Component {
 
   render() {
     return (
-      <div className="comment-box">
-      <form onSubmit={this.handleFormSubmit.bind(this)}>
-        <div className="form-group">
-          <label forHtml="name">name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleInputChange}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label forHtml="email">email</label>
-          <input
-            id="email"
-            type="text"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label forHtml="email">comment</label>
-          <textarea
-            id="content"
-            type="text"
-            name="content"
-            rows="7"
-            value={this.state.content}
-            onChange={this.handleInputChange}
-            className="form-control"
-          />
-        </div>
-        <button className="btn btn-primary" type="submit">Add Comment</button>
-      </form>
+      <div>
+        <CommentForm
+          comment = {this.state}
+          handleFormSubmit = {this.handleFormSubmit}
+          handleInputChange = {this.handleInputChange}
+        />
       </div>
+
     );
   }
 }
