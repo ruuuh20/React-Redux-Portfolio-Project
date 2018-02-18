@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Client from './Client'
+import Api from '../api/Api'
 import SearchResults from './SearchResults'
 
 class SearchForm extends Component {
@@ -22,7 +22,7 @@ class SearchForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    Client.search(this.state, (listings) => {
+    Api.search(this.state, (listings) => {
       this.setState({
         filteredListings: listings
       });

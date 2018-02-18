@@ -33,5 +33,5 @@ function createComment(listingId, comment){
   })
   }
 
-const Client = { search, createComment };
-export default Client;
+const Api = { search, createComment };
+export default Api;
