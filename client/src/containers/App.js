@@ -3,9 +3,9 @@ import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/listingActions.js'
-import HomePage from './HomePage'
+import HomePage from '../components/HomePage'
 import ListingPage from './ListingPage'
-import SearchPage from './SearchPage'
+import SearchPage from '../components/SearchPage'
 
 class App extends Component {
 

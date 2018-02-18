@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/listingActions.js'
-import ListingFullDetails from './ListingFullDetails'
+import ListingFullDetails from '../components/ListingFullDetails'
 
 class ListingPage extends Component {
 

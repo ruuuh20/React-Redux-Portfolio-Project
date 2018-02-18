@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ViewingRequest from './ViewingRequest.js'
-import Comments from './Comments.js'
+import Comments from '../containers/Comments.js'
 
 
 class ListingFullDetails extends Component {
