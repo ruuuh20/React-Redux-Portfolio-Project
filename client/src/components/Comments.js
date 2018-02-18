@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/commentActions.js'
 import CommentForm from './CommentForm'
+import CommentView from './CommentView'
 
 class Comments extends React.Component {
   constructor() {
