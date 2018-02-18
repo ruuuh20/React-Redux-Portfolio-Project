@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ViewingRequest from './ViewingRequest.js'
+import CommentsForm from './CommentsForm.js'
 
 
 class ListingFullDetails extends Component {
@@ -74,6 +75,7 @@ class ListingFullDetails extends Component {
               <h5 className="listing-detail">{listing.listing_price_formatted}</h5>
               <h6 className="listing-detail">{listing.beds} {listing.beds===1? "bed" : "beds"} / {listing.baths} {listing.baths===1? "bath" : "baths"}</h6>
               {viewingForm}
+              <CommentsForm listing={listing} />
             </div>
           </div>
         </div>
