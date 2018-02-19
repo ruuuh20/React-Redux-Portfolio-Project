@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219203642) do
+ActiveRecord::Schema.define(version: 20180219215805) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "listing_id"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20180219203642) do
     t.string "email"
     t.string "website"
     t.string "logo"
+    t.string "password_digest"
+    t.string "username"
   end
 
 end
