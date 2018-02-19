@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :realtors, only: [:index]
 
   resources :comments, only: [:create, :index]
+  resources :sessions
 end
