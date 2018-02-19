@@ -13,7 +13,7 @@ const HomePage = (props) => {
         {listings.map(listing => <FeaturedListing listing = {listing} />)}
       </div>
       <h1> Realtors </h1>
-      <div className="scrolling-wrapper-flexbox">
+      <div className="row realtors">
         {realtors.map(realtor => <RealtorCard realtor = {realtor} />)}
       </div>
     </div>
