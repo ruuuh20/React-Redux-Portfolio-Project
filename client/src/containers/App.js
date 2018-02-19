@@ -13,6 +13,9 @@ class App extends Component {
     if (this.props.featured.length === 0) {
       this.props.actions.fetchFeaturedListings()
     }
+    if (this.props.realtors.length === 0) {
+      this.props.actions.fetchRealtors()
+    }
   }
   render() {
     return (
@@ -23,7 +26,7 @@ class App extends Component {
               <NavLink style={{ marginRight: '10px' }} to="/search">Search Listings</NavLink>
               <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
             </div>
-            <Route exact path="/" render={() => <HomePage listings={this.props.featured} />} />
+            <Route exact path="/" render={() => <HomePage listings={this.props.featured} realtors={this.props.realtors} />} />
             <Route exact path="/search" component={SearchPage} />
             <Route path={`/listings/:listingId`} component={ListingPage} />
           </div>
@@ -39,7 +42,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { featured: state.listings.featuredListings};
+  return { featured: state.listings.featuredListings, realtors: state.realtors.realtors};
 };
 
 function mapDispatchToProps(dispatch) {
