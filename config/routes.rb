@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :realtors, only: [:index]
+
   resources :comments, only: [:create, :index]
 end
