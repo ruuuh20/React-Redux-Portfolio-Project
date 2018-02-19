@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from '../actions/listingActions.js'
+import * as listingActions from '../actions/listingActions.js'
+import * as realtorActions from '../actions/realtorActions.js'
 import HomePage from '../components/HomePage'
 import ListingPage from './ListingPage'
 import SearchPage from '../components/SearchPage'
@@ -11,10 +12,10 @@ class App extends Component {
 
   componentDidMount() {
     if (this.props.featured.length === 0) {
-      this.props.actions.fetchFeaturedListings()
+      this.props.actions.listingActions.fetchFeaturedListings()
     }
     if (this.props.realtors.length === 0) {
-      this.props.actions.fetchRealtors()
+      this.props.actions.realtorActions.fetchAllRealtors()
     }
   }
   render() {
@@ -46,7 +47,12 @@ const mapStateToProps = (state) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
+  return {
+    actions: {
+      listingActions: bindActionCreators(listingActions, dispatch),
+      realtorActions: bindActionCreators(realtorActions, dispatch)
+    }
+  };
 }
 
 export const WrapperApp = connect(mapStateToProps, mapDispatchToProps)(App)
