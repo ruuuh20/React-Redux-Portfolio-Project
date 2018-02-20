@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router'
 import RealtorDashboard from '../components/RealtorDashboard'
 
 class LoginPage extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       username: '',
@@ -26,7 +26,8 @@ class LoginPage extends React.Component {
 
   render() {
     let view = null
-    if (this.props.session === {}) {
+    console.log(this.props.session.size)
+    if (Object.keys(this.props.session).length === 0) {
       view =         <div className="container-fluid row">
                 <div className="col-4">
                   <form onSubmit = {this.handleFormSubmit}>
@@ -74,4 +75,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(sessionActions, dispatch)
   };
 }
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
