@@ -17,7 +17,6 @@ function search(state, returnResults) {
 }
 
 function createComment(listingId, comment){
-  console.log("we are in createComment function of Client.js where we will post to the API")
   return fetch('http://localhost:3001/comments', {
   method: 'POST',
   headers: {

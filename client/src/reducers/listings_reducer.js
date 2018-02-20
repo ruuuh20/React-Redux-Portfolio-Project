@@ -12,6 +12,15 @@ export default function listingsReducer(state= {loading: false, listing: {}, lis
       return Object.assign({}, state, {loading: true})
     case 'FETCH_SINGLE_LISTING':
       return Object.assign({}, state, {loading: false, listing: action.payload})
+    case "CREATE_COMMENT_SUCCESS":
+
+      //let newState = Object.assign({}, state, { state.listing: Object.assign({}, state.listing, {comments: [action.payload, ...state.listing.comments]})})
+      debugger
+      let updatedListing = Object.assign({}, state.listing, {comments: [action.payload, ...state.listing.comments]})
+      let newState = Object.assign({}, state, {listing: updatedListing})
+
+
+      return newState
     default:
       return state;
   }

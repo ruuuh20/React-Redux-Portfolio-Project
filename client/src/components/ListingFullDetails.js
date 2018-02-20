@@ -4,23 +4,14 @@ import Comments from '../containers/Comments.js'
 
 
 class ListingFullDetails extends Component {
-  constructor(){
-    super()
-    this.state = {
-      mainImg: "",
-      allImages: [],
-      requestViewingOn: false,
-      loading: true
+  constructor(props){
+    super(props)
+     this.state = {
+       mainImg: props.listing.main_img,
+       allImages: props.listing.all_image_sources,
+       requestViewingOn: false,
     }
   }
-
-  componentWillReceiveProps(nextProps) {
-  this.setState({
-    mainImg: nextProps.listing.main_img,
-    allImages: nextProps.listing.all_image_sources,
-    loading: false
-  })
-}
 
   handleImageChange(image) {
     this.setState({
@@ -35,21 +26,21 @@ class ListingFullDetails extends Component {
   }
 
   render(){
+
   const listing = this.props.listing
   let viewingForm = null
   if (this.state.requestViewingOn) {
     viewingForm = <ViewingRequest address={listing.address}/>}
   else {viewingForm = <button type="button" className="btn viewing-button btn-secondary"
             onClick={(event) => {this.handleViewingForm();}}>Request Viewing</button>}
-  let comments = null
-  if (!this.state.loading){comments = <Comments listingId={listing.id}/>}
   return (
     <div className="container-fluid">
       <div className="row">
         <div className= "col-6 images-column">
           <img className="main-img img-fluid" src={this.state.mainImg} alt={listing.address}/>
           <div className="row thumbnails-row scrolling-wrapper-flexbox">
-            {this.state.allImages.map(image =>
+            {this.state.allImages ?
+              this.state.allImages.map(image =>
               <img
                 key={image.id}
                 className="thumbnail-image"
@@ -59,7 +50,7 @@ class ListingFullDetails extends Component {
                 onClick={() => {
                   this.handleImageChange(image);
                 }}
-              />)}
+              />) : null}
           </div>
           <div className="row thumbnails-row">
             <div className="summary-header">
@@ -76,7 +67,7 @@ class ListingFullDetails extends Component {
               <h5 className="listing-detail">{listing.listing_price_formatted}</h5>
               <h6 className="listing-detail">{listing.beds} {listing.beds===1? "bed" : "beds"} / {listing.baths} {listing.baths===1? "bath" : "baths"}</h6>
               {viewingForm}
-              {comments}
+              <Comments listingId={listing.id}/>
             </div>
           </div>
         </div>
