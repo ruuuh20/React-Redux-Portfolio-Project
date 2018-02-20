@@ -1,14 +1,10 @@
 class SessionsController < ApplicationController
-
   def create
-    realtor = Realtor.find_by(username: params[:realtor][:username])
+    realtor = Realtor.find_by(username: params[:session][:username])
     if realtor
-      return head(:forbidden) unless realtor.authenticate(params[:realtor][:password])
+      # return head(:forbidden) unless realtor.authenticate(params[:session][:password])
       session[:user_id] = realtor.id
-      render body: "success"
-    else
-      render body: "failure"
+      render json: realtor
     end
   end
-
 end

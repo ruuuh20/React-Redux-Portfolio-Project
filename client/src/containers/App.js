@@ -7,6 +7,7 @@ import * as realtorActions from '../actions/realtorActions.js'
 import HomePage from '../components/HomePage'
 import ListingPage from './ListingPage'
 import SearchPage from '../components/SearchPage'
+import LoginPage from './LoginPage'
 
 class App extends Component {
 
@@ -26,9 +27,11 @@ class App extends Component {
             <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
               <NavLink style={{ marginRight: '10px' }} to="/search">Search Listings</NavLink>
               <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
+              <NavLink style={{ marginRight: '10px' }} to="/login">Realtor Login</NavLink>
             </div>
             <Route exact path="/" render={() => <HomePage listings={this.props.featured} realtors={this.props.realtors} />} />
             <Route exact path="/search" component={SearchPage} />
+            <Route exact path="/login" component={LoginPage} />
             <Route path={`/listings/:listingId`} component={ListingPage} />
           </div>
         </Router>
