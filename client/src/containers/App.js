@@ -10,6 +10,12 @@ import SearchPage from '../components/SearchPage'
 import LoginPage from './LoginPage'
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      session: this.props.session
+    }
+  }
 
   componentDidMount() {
     if (this.props.featured.length === 0) {
@@ -20,6 +26,8 @@ class App extends Component {
     }
   }
   render() {
+    let sessionOption = null
+    Object.keys(this.props.session).length === 0 ? sessionOption = "Realtor Login" : sessionOption = "Logout"
     return (
       <div>
         <Router>
@@ -27,7 +35,7 @@ class App extends Component {
             <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
               <NavLink style={{ marginRight: '10px' }} to="/search">Search Listings</NavLink>
               <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
-              <NavLink style={{ marginRight: '10px' }} to="/login">Realtor Login</NavLink>
+              <NavLink style={{ marginRight: '10px' }} to="/login">{sessionOption}</NavLink>
             </div>
             <Route exact path="/" render={() => <HomePage listings={this.props.featured} realtors={this.props.realtors} />} />
             <Route exact path="/search" component={SearchPage} />
@@ -46,7 +54,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { featured: state.listings.featuredListings, realtors: state.realtors.realtors};
+  return { featured: state.listings.featuredListings, realtors: state.realtors.realtors, session: state.sessions.sessionRealtor};
 };
 
 function mapDispatchToProps(dispatch) {
