@@ -6,7 +6,7 @@ class RealtorsController < ApplicationController
   end
 
   def show
-    realtor = Realtor.find(params[:realtor_id])
+    realtor = Realtor.find(params[:id])
     render json: realtor
   end
 

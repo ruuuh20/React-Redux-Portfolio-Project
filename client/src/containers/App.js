@@ -19,6 +19,12 @@ class App extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      session: nextProps.loggedInRealtor
+    })
+  }
+
   handleOnClick() {
     if (this.props.loggedInRealtor){
       this.props.actions.sessionActions.logoutUser()
@@ -60,7 +66,7 @@ class App extends Component {
               (<LoginPage/>))}/>
             <Route exact path="/dashboard" render={() => (!loggedIn ?
               (<Redirect to="/login"/>) :
-              (<RealtorDashboard/>))}/>
+              (<RealtorDashboard realtorId = {this.state.session}/>))}/>
             <Route path={`/listings/:listingId`} component={ListingPage} />
           </div>
         </Router>
