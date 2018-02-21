@@ -65,7 +65,6 @@ class AddListing extends Component {
   render(){
     let sources = this.state.imgSources
     let imageFields = null
-    console.log(sources)
     if (sources) {imageFields = sources.map(
       img => <AddImageField
       index={sources.indexOf(img)}
