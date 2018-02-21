@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :realtors, only: [:index, :show]
 
+  resources :realtors do
+    resources :listings
+  end
+
   resources :comments, only: [:create, :index]
   resources :sessions
 end

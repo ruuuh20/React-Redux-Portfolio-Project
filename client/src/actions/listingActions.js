@@ -1,8 +1,8 @@
 import fetch from 'isomorphic-fetch';
-export function fetchAllListings() {
+export function fetchRealtorListings(realtorId) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_LISTINGS' });
-    return fetch('http://localhost:3001/listings')
+    return fetch(`http://localhost:3001/realtors/${realtorId}/listings`)
       .then(response => response.json())
       .then(listings => dispatch({ type: 'FETCH_LISTINGS', payload: listings }));
   }};
