@@ -26,8 +26,8 @@ class LoginPage extends React.Component {
 
   render() {
     let view = null
-    console.log(this.props.session.size)
-    if (Object.keys(this.props.session).length === 0) {
+    console.log(this.props.loggedInRealtor)
+    if (!this.props.loggedInRealtor) {
       view =         <div className="container-fluid row">
                 <div className="col-4">
                   <form onSubmit = {this.handleFormSubmit}>
@@ -60,6 +60,7 @@ class LoginPage extends React.Component {
     }
     else view = <RealtorDashboard />
     return (
+
       <div>
        {view}
       </div>
@@ -67,7 +68,7 @@ class LoginPage extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  return { session: state.sessions.sessionRealtor};
+  return { loggedInRealtor: state.sessions.sessionRealtorId};
 };
 
 function mapDispatchToProps(dispatch) {
