@@ -10,7 +10,6 @@ class AddListing extends Component {
     this.state = {
       mainImgSource: "",
       imgSources: [""],
-      numberOfSubImages: 1,
       neighborhood: "",
       realtorId: props.realtorId,
       streetName: "",
@@ -43,12 +42,23 @@ class AddListing extends Component {
 
   }
 
+  handleAddImage = (event) => {
+    event.preventDefault()
+    let array = this.state.imgSources
+    array.push("")
+    this.setState({
+      imgSources: array
+    })
+  }
+
 
   render(){
     let sources = this.state.imgSources
-    let imageFields = sources.map(
+    let imageFields = null
+    console.log(sources)
+    if (sources) {imageFields = sources.map(
       img => <AddImageField index={sources.indexOf(img)} key={sources.indexOf(img)} imgSource={sources[sources.indexOf(img)]} handleInputChange={this.handleImageFieldChange.bind(this)} />
-    )
+    )}
     return (
       <div>
         <div className="container-fluid row">
@@ -66,6 +76,7 @@ class AddListing extends Component {
             </div>
             <label>Add sources for additional images</label>
             {imageFields}
+            <button onClick={this.handleAddImage.bind(this)} className="btn btn-primary">Add Another Image</button>
             <div className="form-group">
               <label htmlFor="neighborhood">Neighborhood</label>
               <input
