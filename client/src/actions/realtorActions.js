@@ -11,7 +11,6 @@ export function fetchAllRealtors() {
     return (dispatch) => {
       dispatch({type: 'LOADING_REALTOR'});
       var url = `http://localhost:3001/realtors/${realtorId}`
-      debugger
       return fetch(url)
       .then(response => response.json())
       .then(realtor => dispatch( {type: 'FETCH_REALTOR', payload: realtor}))

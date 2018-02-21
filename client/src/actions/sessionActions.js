@@ -13,7 +13,6 @@ export function loginUser(credentials) {
       sessionStorage.setItem('jwt', response.user_id);
       dispatch(loginSuccess(response.user_id));
     }).catch(error => {
-      debugger;
       throw(error);
     });
   };
@@ -21,9 +20,7 @@ export function loginUser(credentials) {
 
 export function logoutUser(){
   return (dispatch) => {
-    debugger
     sessionStorage.removeItem('jwt');
-    debugger
     dispatch({type: "LOGOUT_SUCCESS"})
   }
 }
