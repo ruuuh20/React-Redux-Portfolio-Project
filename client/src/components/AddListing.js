@@ -51,13 +51,28 @@ class AddListing extends Component {
     })
   }
 
+  handleRemoveInput = (event) => {
+    event.preventDefault()
+    const index = event.target.name
+    let array = this.state.imgSources
+    array.splice(index, 1)
+    this.setState({
+      imgSources: array
+    })
+  }
+
 
   render(){
     let sources = this.state.imgSources
     let imageFields = null
     console.log(sources)
     if (sources) {imageFields = sources.map(
-      img => <AddImageField index={sources.indexOf(img)} key={sources.indexOf(img)} imgSource={sources[sources.indexOf(img)]} handleInputChange={this.handleImageFieldChange.bind(this)} />
+      img => <AddImageField
+      index={sources.indexOf(img)}
+      key={sources.indexOf(img)}
+      imgSource={sources[sources.indexOf(img)]}
+      handleInputChange={this.handleImageFieldChange.bind(this)}
+      handleRemoveInput={this.handleRemoveInput.bind(this)}/>
     )}
     return (
       <div>

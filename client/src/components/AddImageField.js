@@ -12,6 +12,7 @@ const AddImageField = (props) => {
           onChange = {props.handleInputChange}
           className="form-control"
         />
+        <button name={props.index} onClick={props.handleRemoveInput} className="btn delete-button">remove</button>
       </div>
     </div>
   )
