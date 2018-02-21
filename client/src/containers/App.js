@@ -59,14 +59,15 @@ class App extends Component {
               <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
               <NavLink onClick= {this.handleOnClick.bind(this)} style={{ marginRight: '10px' }} to="/login">{sessionOption}</NavLink>
             </div>
-            <Route exact path="/" render={() => <HomePage listings={this.props.featured} realtors={this.props.realtors} />} />
+            <Route exact path="/" render={() => (loggedIn ? (<RealtorDashboard realtorId = {this.state.session}/>) :
+              (<HomePage listings={this.props.featured} realtors={this.props.realtors} />))} />
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/login" render={() => (loggedIn ?
               (<Redirect to="/dashboard"/>) :
               (<LoginPage/>))}/>
             <Route exact path="/dashboard" render={() => (!loggedIn ?
               (<Redirect to="/login"/>) :
-              (<RealtorDashboard realtorId = {this.state.session}/>))}/>
+              (<RealtorDashboard realtorId = {this.state.session} />))}/>
             <Route path={`/listings/:listingId`} component={ListingPage} />
           </div>
         </Router>

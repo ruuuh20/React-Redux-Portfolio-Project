@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, NavLink, Route, Redirect, Match } from 'react-router-dom';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as realtorActions from '../actions/realtorActions.js'
-import * as listingActions from '../actions/listingActions.js'
+import * as realtorActions from '../actions/realtorActions'
+import * as listingActions from '../actions/listingActions'
+import ManageListings from './ManageListings'
+import AddListing from './AddListing'
 
 class RealtorDashboard extends Component  {
 
@@ -11,11 +14,12 @@ class RealtorDashboard extends Component  {
     this.state = {
       realtorId: props.realtorId,
       realtor: props.realtor,
-      currentListings: props.listings
+      currentListings: props.listings,
     }
   }
 
   componentDidMount() {
+    console.log(this.props)
     const realtorId = this.state.realtorId
     this.props.realtorActions.fetchRealtor(realtorId)
     this.props.listingActions.fetchRealtorListings(realtorId)
@@ -24,15 +28,26 @@ class RealtorDashboard extends Component  {
   componentWillReceiveProps(nextProps){
     this.setState({
       realtor: nextProps.realtor,
-      currentListings: nextProps.listings
+      currentListings: nextProps.listings,
     })
   }
 
   render (){
+    const realtor = this.state.realtor
+    const listings = this.state.currentListings
   return (
     <div>
-      {`listings: ${this.state.currentListings}`}
-      {this.state.realtor.id}
+      <Router>
+        <div>
+          <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
+            <NavLink style={{ marginRight: '10px' }} to="/dashbaord/managelistings" >Manage Listings</NavLink>
+            <NavLink style={{ marginRight: '10px' }} to="/dashboard/addlisting">Add Listing</NavLink>
+          </div>
+          <Route exact path="/dashbaord/managelistings" component={ManageListings}/>
+          <Route exact path="/dashboard/addlisting" component={AddListing}/>
+        </div>
+      </Router>
+
     </div>
   )}
 }
