@@ -40,10 +40,10 @@ class RealtorDashboard extends Component  {
       <Router>
         <div>
           <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
-            <NavLink style={{ marginRight: '10px' }} to="/dashbaord/managelistings" >Manage Listings</NavLink>
+            <NavLink style={{ marginRight: '10px' }} to="/dashboard/managelistings" >Manage Listings</NavLink>
             <NavLink style={{ marginRight: '10px' }} to="/dashboard/addlisting">Add Listing</NavLink>
           </div>
-          <Route exact path="/dashbaord/managelistings" component={ManageListings}/>
+          <Route exact path="/dashboard/managelistings" component={ManageListings}/>
           <Route exact path="/dashboard/addlisting" component={AddListing}/>
         </div>
       </Router>

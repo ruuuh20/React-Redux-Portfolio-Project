@@ -65,7 +65,7 @@ class App extends Component {
             <Route exact path="/login" render={() => (loggedIn ?
               (<Redirect to="/dashboard"/>) :
               (<LoginPage/>))}/>
-            <Route exact path="/dashboard" render={() => (!loggedIn ?
+            <Route path="/dashboard" render={() => (!loggedIn ?
               (<Redirect to="/login"/>) :
               (<RealtorDashboard realtorId = {this.state.session} />))}/>
             <Route path={`/listings/:listingId`} component={ListingPage} />
