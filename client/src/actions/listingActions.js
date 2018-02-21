@@ -1,4 +1,6 @@
 import fetch from 'isomorphic-fetch';
+import Api from '../api/Api'
+
 export function fetchRealtorListings(realtorId) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_LISTINGS' });
@@ -22,5 +24,14 @@ export function fetchRealtorListings(realtorId) {
         return fetch(url)
         .then(response => response.json())
         .then(listing => dispatch( {type: 'FETCH_SINGLE_LISTING', payload: listing}))
+      }
+    }
+
+    export function createListing(realtorId, listing){
+      return (dispatch) => {
+        dispatch({ type: 'CREATING_LISTING' });
+        return Api.createListing(realtorId, listing)
+        .then(response => response.json())
+        .then(listing => dispatch({type: "CREATE_LISTING_SUCCESS", payload: listing}))
       }
     }

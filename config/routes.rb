@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :listings
   end
 
+  resources :images, only: [:index, :show, :create]
+
   resources :comments, only: [:create, :index]
   resources :sessions
 end

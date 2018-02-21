@@ -24,4 +24,20 @@ class ListingsController < ApplicationController
     end
   end
 
+  def create
+    listing = Listing.create(listing_params)
+    images_params.each do |image|
+      Image.create(source: image, listing_id: listing.id)
+    end
+    render json: listing
+  end
+
+  def listing_params
+    params.require(:listing).permit(:main_img, :neighborhood, :realtor_id, :address, :listing_price, :beds, :baths, :description)
+  end
+
+  def images_params
+    params.require(:images)
+  end
+
 end

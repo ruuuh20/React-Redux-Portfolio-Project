@@ -28,7 +28,7 @@ class AddListing extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    debugger
+    this.props.actions.createListing(this.state.realtorId, this.state)
   };
 
   handleImageFieldChange = (event) => {

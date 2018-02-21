@@ -17,7 +17,6 @@ function search(state, returnResults) {
 }
 
 function createComment(listingId, comment){
-  console.log("we are in createComment function of Client.js where we will post to the API")
   return fetch('http://localhost:3001/comments', {
   method: 'POST',
   headers: {
@@ -33,5 +32,27 @@ function createComment(listingId, comment){
   })
   }
 
-const Api = { search, createComment };
+  function createListing(realtorId, listing){
+    return fetch('http://localhost:3001/listings', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      realtor_id: realtorId,
+      main_img: listing.mainImgSource,
+      neighborhood: listing.neighborhood,
+      address: `${listing.streetName} ${listing.unitNumber}`,
+      listing_price: listing.listingPrice,
+      beds: listing.beds,
+      baths: listing.baths,
+      description: listing.description,
+      images: listing.imgSources
+
+      })
+    })
+    }
+
+const Api = { search, createComment, createListing };
 export default Api;
