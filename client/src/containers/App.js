@@ -38,12 +38,10 @@ class App extends Component {
     let loggedIn = false
     if (this.props.loggedInRealtor){
       sessionOption = "Logout"
-      console.log(`value of this.props.loggedInRealtor is ${this.props.loggedInRealtor}`)
       loggedIn = true
     }
     else {
       sessionOption = "Realtor Login"
-      console.log(`value of this.props.loggedInRealtor is ${this.props.loggedInRealtor}`)
       loggedIn = false
     }
     return(
