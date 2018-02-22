@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as realtorActions from '../actions/realtorActions'
 import * as listingActions from '../actions/listingActions'
-import ManageListings from './ManageListings'
-import AddListing from './AddListing'
+import ManageListings from '../components/ManageListings'
+import AddListing from '../components/AddListing'
 
 class RealtorDashboard extends Component  {
 

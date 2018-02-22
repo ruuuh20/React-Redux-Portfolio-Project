@@ -9,7 +9,7 @@ import HomePage from '../components/HomePage'
 import ListingPage from './ListingPage'
 import SearchPage from '../components/SearchPage'
 import LoginPage from './LoginPage'
-import RealtorDashboard from '../components/RealtorDashboard'
+import RealtorDashboard from './RealtorDashboard'
 
 class App extends Component {
   constructor(props){

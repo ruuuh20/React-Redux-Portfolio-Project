@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddListingForm from './AddListingForm'
+import AddListingForm from '../containers/AddListingForm'
 
 class AddListing extends Component {
   constructor() {
