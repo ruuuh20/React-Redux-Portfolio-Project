@@ -80,7 +80,7 @@ class AddListingForm extends Component {
           <div className="col-4">
           <form onSubmit = {this.handleFormSubmit.bind(this)}>
             <div className="form-group">
-              <label htmlFor="mainImgSource">Add Source for {`Listing's`} Cover Image</label>
+              <label htmlFor="mainImgSource">Add source for {`listing's`} cover image</label>
               <input
                 type = "text"
                 name = "mainImgSource"
@@ -91,7 +91,7 @@ class AddListingForm extends Component {
             </div>
             <label>Add sources for additional images</label>
             {imageFields}
-            <button onClick={this.handleAddImage.bind(this)} className="btn btn-primary">Add Another Image</button>
+            <button onClick={this.handleAddImage.bind(this)} className="btn btn-secondary add-image">Add Another Image</button>
             <div className="form-group">
               <label htmlFor="neighborhood">Neighborhood</label>
               <input
@@ -163,7 +163,7 @@ class AddListingForm extends Component {
                 rows = "15"
               />
             </div>
-            <button type="submit" className="btn btn-primary">Creat Listing</button>
+            <button type="submit" className="btn btn-primary">Create Listing</button>
           </form>
         </div>
       </div>
