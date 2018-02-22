@@ -20,12 +20,12 @@ class Comments extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props){
-    this.setState({
-      listingId: props.listingId,
-      comments: props.comments.reverse()
-    })
-  }
+  // componentWillReceiveProps(props){
+  //   this.setState({
+  //     listingId: props.listingId,
+  //     comments: props.comments.reverse()
+  //   })
+  // }
 
   componentDidMount(){
     const listingId = this.state.listingId
@@ -53,7 +53,7 @@ class Comments extends React.Component {
     :form = <CommentForm comment = {this.state}
           handleFormSubmit = {this.handleFormSubmit}
           handleInputChange = {this.handleInputChange}/>
-    const comments = this.state.comments.map(comment => <CommentView comment = {comment} />)
+    const comments = this.props.comments.map(comment => <CommentView comment = {comment} />).reverse()
     return (
       <div className="comments-section">
         <p className="comments-title">Listing Comments</p>

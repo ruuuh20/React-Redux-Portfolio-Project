@@ -7,10 +7,8 @@ function search(state, returnResults) {
       query.push(filter)
     }
   })
-  console.log(query)
   if (query.length === 0){query.push(`all=true`)}
   query = query.join("&")
-  console.log(query)
   return fetch(`http://localhost:3001/listings?${query}`)
     .then(response => response.json())
     .then(returnResults);
