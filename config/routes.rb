@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :listings
   end
 
+  get '/realtors/:realtor_id/search_listings', to: "realtors#listings_index"
+
   resources :images, only: [:index, :show, :create]
 
   resources :comments, only: [:create, :index]

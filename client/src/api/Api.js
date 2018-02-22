@@ -14,6 +14,13 @@ function search(state, returnResults) {
     .then(returnResults);
 }
 
+function loadListing(address, realtorId, returnResult) {
+  let query = `address=${address["address"]}`
+  return fetch(`http://localhost:3001/realtors/${realtorId}/search_listings?${query}`)
+    .then(response => response.json())
+    .then(returnResult);
+}
+
 function createComment(listingId, comment){
   return fetch('http://localhost:3001/comments', {
   method: 'POST',
@@ -52,5 +59,5 @@ function createComment(listingId, comment){
     })
     }
 
-const Api = { search, createComment, createListing };
+const Api = { search, createComment, createListing, loadListing };
 export default Api;

@@ -43,7 +43,7 @@ class RealtorDashboard extends Component  {
             <NavLink className="btn btn-secondary" style={{ marginLeft: '20px', marginRight: '10px' }} to="/dashboard/managelistings" >Manage Listings</NavLink>
             <NavLink className="btn btn-secondary" style={{ marginRight: '10px' }} to="/dashboard/addlisting">Add Listing</NavLink>
           </div>
-          <Route exact path="/dashboard/managelistings" component={ManageListings}/>
+          <Route exact path="/dashboard/managelistings" render={() => <ManageListings realtorId={this.state.realtorId} />}/>
           <Route exact path="/dashboard/addlisting" render={() => <AddListing realtorId={this.state.realtorId} />}/>
         </div>
       </Router>
