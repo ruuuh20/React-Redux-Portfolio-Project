@@ -10,11 +10,11 @@ const HomePage = (props) => {
     <div className="home-page">
       <h3> Featured Listings </h3>
       <div className="scrolling-wrapper-flexbox">
-        {listings.map(listing => <FeaturedListing listing = {listing} />)}
+        {listings.map(listing => <FeaturedListing key = {listing.id} listing = {listing} />)}
       </div>
       <h3> Realtors </h3>
       <div className="row realtors">
-        {realtors.map(realtor => <RealtorCard realtor = {realtor} />)}
+        {realtors.map(realtor => <RealtorCard key = {realtor.id} realtor = {realtor} />)}
       </div>
     </div>
   )

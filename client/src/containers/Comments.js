@@ -45,11 +45,7 @@ class Comments extends Component {
     :form = <CommentForm comment = {this.state}
           handleFormSubmit = {this.handleFormSubmit}
           handleInputChange = {this.handleInputChange}/>
-<<<<<<< HEAD
-    const comments = this.props.comments.map(comment => <CommentView comment = {comment} />)
-=======
-    const comments = this.props.comments.map(comment => <CommentView comment = {comment} />).reverse()
->>>>>>> dev
+    const comments = this.props.comments.map(comment => <CommentView key = {comment.id} comment = {comment} />).reverse()
     return (
       <div className="comments-section">
         <p className="comments-title">Listing Comments</p>

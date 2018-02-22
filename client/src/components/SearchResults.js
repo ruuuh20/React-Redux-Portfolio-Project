@@ -52,7 +52,8 @@ class SearchResults extends Component {
           {forwardButton}
         </div>
         <div className="search-results">
-          {listings.map(listing => <FilteredListing listing = {listing} />)}
+  
+          {listings.map(listing => <FilteredListing key={listing.id} listing = {listing} />)}
         </div>
       </div>
     )}

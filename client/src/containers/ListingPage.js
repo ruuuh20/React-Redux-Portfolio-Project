@@ -8,9 +8,8 @@ class ListingPage extends Component {
 
   componentDidMount() {
     const listingId = parseInt(this.props.match.params.listingId, 10)
-    if (Object.keys(this.props.listing).length === 0) {
-      this.props.actions.fetchListing(listingId)
-  }}
+    this.props.actions.fetchListing(listingId)}
+    
   render() {
     return (
       <div>

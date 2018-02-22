@@ -10,6 +10,7 @@ class ListingFullDetails extends Component {
        mainImg: props.listing.main_img,
        allImages: props.listing.all_image_sources,
        requestViewingOn: false,
+       listing: props.listing
     }
   }
 
@@ -27,7 +28,7 @@ class ListingFullDetails extends Component {
 
   render(){
 
-  const listing = this.props.listing
+  const listing = this.state.listing
   let viewingForm = null
   if (this.state.requestViewingOn) {
     viewingForm = <ViewingRequest address={listing.address}/>}
@@ -42,7 +43,7 @@ class ListingFullDetails extends Component {
             {this.state.allImages ?
               this.state.allImages.map(image =>
               <img
-                key={image.id}
+                key={this.state.allImages.indexOf(image)}
                 className="thumbnail-image"
                 src={image}
                 style={this.state.mainImg===image? {opacity: 1} : {}}
