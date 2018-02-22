@@ -7,13 +7,18 @@ function search(state, returnResults) {
       query.push(filter)
     }
   })
-  console.log(query)
   if (query.length === 0){query.push(`all=true`)}
   query = query.join("&")
-  console.log(query)
   return fetch(`http://localhost:3001/listings?${query}`)
     .then(response => response.json())
     .then(returnResults);
+}
+
+function loadListing(address, realtorId, returnResult) {
+  let query = `address=${address["address"]}`
+  return fetch(`http://localhost:3001/realtors/${realtorId}/search_listings?${query}`)
+    .then(response => response.json())
+    .then(returnResult);
 }
 
 function createComment(listingId, comment){
@@ -32,5 +37,27 @@ function createComment(listingId, comment){
   })
   }
 
-const Api = { search, createComment };
+  function createListing(realtorId, listing){
+    return fetch('http://localhost:3001/listings', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      realtor_id: realtorId,
+      main_img: listing.mainImgSource,
+      neighborhood: listing.neighborhood,
+      address: `${listing.streetName} ${listing.unitNumber}`,
+      listing_price: listing.listingPrice,
+      beds: listing.beds,
+      baths: listing.baths,
+      description: listing.description,
+      images: listing.imgSources
+
+      })
+    })
+    }
+
+const Api = { search, createComment, createListing, loadListing };
 export default Api;

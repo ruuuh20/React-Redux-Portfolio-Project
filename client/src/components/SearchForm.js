@@ -45,7 +45,7 @@ class SearchForm extends Component {
                   onChange = {this.handleSearchChange}
                   className="form-control"
                 />
-                <small id="emailHelp" class="form-text text-muted">Search by any NYC neighborhood</small>
+                <small className="form-text text-muted">Search by any NYC neighborhood</small>
               </div>
               <div className="form-group">
                 <label htmlFor="minRent">Min Rent</label>

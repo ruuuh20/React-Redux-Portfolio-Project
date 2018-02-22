@@ -1,8 +1,10 @@
 import fetch from 'isomorphic-fetch';
-export function fetchAllListings() {
+import Api from '../api/Api'
+
+export function fetchRealtorListings(realtorId) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_LISTINGS' });
-    return fetch('http://localhost:3001/listings')
+    return fetch(`http://localhost:3001/realtors/${realtorId}/listings`)
       .then(response => response.json())
       .then(listings => dispatch({ type: 'FETCH_LISTINGS', payload: listings }));
   }};
@@ -22,5 +24,14 @@ export function fetchAllListings() {
         return fetch(url)
         .then(response => response.json())
         .then(listing => dispatch( {type: 'FETCH_SINGLE_LISTING', payload: listing}))
+      }
+    }
+
+    export function createListing(realtorId, listing){
+      return (dispatch) => {
+        dispatch({ type: 'CREATING_LISTING' });
+        return Api.createListing(realtorId, listing)
+        .then(response => response.json())
+        .then(listing => dispatch({type: "CREATE_LISTING_SUCCESS", payload: listing}))
       }
     }

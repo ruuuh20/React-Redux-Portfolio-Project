@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/commentActions.js'
 import CommentForm from '../components/CommentForm'
 import CommentView from '../components/CommentView'
 
-class Comments extends React.Component {
+class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,13 +18,6 @@ class Comments extends React.Component {
 
     };
   }
-
-  // componentWillReceiveProps(props){
-  //   this.setState({
-  //     listingId: props.listingId,
-  //     comments: props.comments.reverse()
-  //   })
-  // }
 
   componentDidMount(){
     const listingId = this.state.listingId
@@ -53,7 +45,11 @@ class Comments extends React.Component {
     :form = <CommentForm comment = {this.state}
           handleFormSubmit = {this.handleFormSubmit}
           handleInputChange = {this.handleInputChange}/>
+<<<<<<< HEAD
     const comments = this.props.comments.map(comment => <CommentView comment = {comment} />)
+=======
+    const comments = this.props.comments.map(comment => <CommentView comment = {comment} />).reverse()
+>>>>>>> dev
     return (
       <div className="comments-section">
         <p className="comments-title">Listing Comments</p>
