@@ -54,10 +54,13 @@ class App extends Component {
       <div>
         <Router>
           <div>
-            <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
-              <NavLink style={{ marginRight: '10px' }} to="/search">Search Listings</NavLink>
-              <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
-              <NavLink onClick= {this.handleOnClick.bind(this)} style={{ marginRight: '10px' }} to="/login">{sessionOption}</NavLink>
+            <div className="navbar">
+              <p>NYC Apartment Search</p>
+              <NavLink onClick= {this.handleOnClick.bind(this)} to="/login">{sessionOption}</NavLink>
+            </div>
+            <div className="subnav">
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/search">Search Listings</NavLink>
             </div>
             <Route exact path="/" render={() => (loggedIn ? (<RealtorDashboard realtorId = {this.state.session}/>) :
               (<HomePage listings={this.props.featured} realtors={this.props.realtors} />))} />
