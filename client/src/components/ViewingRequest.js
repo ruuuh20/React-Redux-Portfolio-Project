@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-class ViewingRequest extends React.Component {
+class ViewingRequest extends Component {
   constructor() {
     super();
 

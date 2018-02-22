@@ -2,8 +2,6 @@ import React from 'react'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as sessionActions from '../actions/sessionActions';
-import { Route, Redirect } from 'react-router'
-import RealtorDashboard from './RealtorDashboard'
 
 class LoginPage extends React.Component {
   constructor(props) {

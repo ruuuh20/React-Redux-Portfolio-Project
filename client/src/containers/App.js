@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, NavLink, Route, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Route, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as listingActions from '../actions/listingActions.js'

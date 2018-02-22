@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, NavLink, Route, Redirect, Match } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as realtorActions from '../actions/realtorActions'
@@ -19,7 +19,6 @@ class RealtorDashboard extends Component  {
   }
 
   componentDidMount() {
-    console.log(this.props)
     const realtorId = this.state.realtorId
     this.props.realtorActions.fetchRealtor(realtorId)
     this.props.listingActions.fetchRealtorListings(realtorId)
@@ -33,8 +32,6 @@ class RealtorDashboard extends Component  {
   }
 
   render (){
-    const realtor = this.state.realtor
-    const listings = this.state.currentListings
   return (
     <div>
       <Router>

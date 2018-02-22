@@ -23,14 +23,16 @@ class SearchResults extends Component {
   }
 
   handleNext = () => {
+    let newIndex = this.state.listingsIndex + 1
     this.setState({
-      listingsIndex: ++this.state.listingsIndex
+      listingsIndex: newIndex
     })
   }
 
   handlePrevious = () => {
+    let newIndex = this.state.listingsIndex - 1
     this.setState({
-      listingsIndex: --this.state.listingsIndex
+      listingsIndex: newIndex
     })
   }
 
