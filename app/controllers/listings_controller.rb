@@ -32,6 +32,11 @@ class ListingsController < ApplicationController
     render json: listing
   end
 
+  def destroy
+    listing = Listing.find(params[:id])
+    listing.destroy
+  end
+
   def listing_params
     params.require(:listing).permit(:main_img, :neighborhood, :realtor_id, :address, :listing_price, :beds, :baths, :description)
   end

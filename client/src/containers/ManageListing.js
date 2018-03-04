@@ -2,24 +2,48 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/listingActions.js'
+import EditListingForm from './EditListingForm'
 
 class ManageListing extends Component {
+  constructor(){
+    super()
+    this.state = {
+      listingDeleted: false
+    }
+  }
 
   componentDidMount(props) {
     const listingId = parseInt(this.props.match.params.listingId, 10)
     this.props.actions.fetchListing(listingId)}
 
+    deleteListing = () => {
+      const listingId = this.props.listing.id
+      this.props.actions.deleteListing(listingId)
+      this.setState({
+        listingDeleted: true
+      })
+    }
+
   render(){
+    let view = null
+    if (this.state.listingDeleted) {view = <p>Listing Deleted.</p>}
+    else {view =
+      <div>
+        <h6 className="edit-listing-title">{this.props.listing.address}</h6>
+        <button onClick= {this.deleteListing.bind(this)} className="delete">Delete Listing</button>
+        <EditListingForm listing={this.props.listing} />
+      </div>}
     return (
     <div>
-      {this.props.listing.id}
+      {view}
     </div>
   )}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return { listing: state.listings.listing};
 };
+
 
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}

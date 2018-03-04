@@ -5,21 +5,34 @@ import * as actions from '../actions/listingActions.js'
 import AddImageField from '../components/AddImageField'
 
 class EditListingForm extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       mainImgSource: "",
-      imgSources: [""],
+      imgSources: "",
       neighborhood: "",
-      realtorId: props.realtorId,
-      streetName: "",
-      unitNumber: "",
+      address: "",
       listingPrice: "",
       beds: "",
       baths: "",
       description: ""
     }
   }
+
+  componentWillReceiveProps(nextProps){
+    const listing = nextProps.listing
+    this.setState({
+      mainImgSource: listing.main_img,
+      imgSources: listing.all_image_sources,
+      neighborhood: listing.neighborhood,
+      address: listing.address,
+      listingPrice: listing.listing_price,
+      beds: listing.beds,
+      baths: listing.baths,
+      description: listing.description
+    })
+  }
+
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -80,7 +93,7 @@ class EditListingForm extends Component {
           <div className="col-4">
           <form onSubmit = {this.handleFormSubmit.bind(this)}>
             <div className="form-group">
-              <label htmlFor="mainImgSource">Add source for {`listing's`} cover image</label>
+              <label htmlFor="mainImgSource">Lisiting cover image source</label>
               <input
                 type = "text"
                 name = "mainImgSource"
@@ -89,7 +102,7 @@ class EditListingForm extends Component {
                 className="form-control"
               />
             </div>
-            <label>Add sources for additional images</label>
+            <label>Additional images</label>
             {imageFields}
             <button onClick={this.handleAddImage.bind(this)} className="btn btn-secondary add-image">Add Another Image</button>
             <div className="form-group">
@@ -103,21 +116,11 @@ class EditListingForm extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="streetName">Street Name</label>
+              <label htmlFor="address">Address</label>
               <input
                 type = "text"
-                name = "streetName"
-                value = {this.state.streetName}
-                onChange = {this.handleInputChange}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="unitNumber">Unit Number (if applicable)</label>
-              <input
-                type = "text"
-                name = "unitNumber"
-                value = {this.state.maxRent}
+                name = "address"
+                value = {this.state.address}
                 onChange = {this.handleInputChange}
                 className="form-control"
               />
@@ -127,7 +130,7 @@ class EditListingForm extends Component {
               <input
                 type = "number"
                 name = "listingPrice"
-                value = {this.state.maxRent}
+                value = {this.state.listingPrice}
                 onChange = {this.handleInputChange}
                 className="form-control"
               />
@@ -163,7 +166,7 @@ class EditListingForm extends Component {
                 rows = "15"
               />
             </div>
-            <button type="submit" className="btn btn-primary">Create Listing</button>
+            <button type="submit" className="btn btn-primary">Update Listing</button>
           </form>
         </div>
       </div>
@@ -171,12 +174,8 @@ class EditListingForm extends Component {
     )}
 }
 
-const mapStateToProps = (state, props) => {
-  return { realtorId: state.sessions.sessionRealtorId};
-};
-
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditListingForm)
+export default connect(null, mapDispatchToProps)(EditListingForm)

@@ -117,7 +117,7 @@ class AddListingForm extends Component {
               <input
                 type = "text"
                 name = "unitNumber"
-                value = {this.state.maxRent}
+                value = {this.state.unitNumber}
                 onChange = {this.handleInputChange}
                 className="form-control"
               />
@@ -127,7 +127,7 @@ class AddListingForm extends Component {
               <input
                 type = "number"
                 name = "listingPrice"
-                value = {this.state.maxRent}
+                value = {this.state.listingPrice}
                 onChange = {this.handleInputChange}
                 className="form-control"
               />

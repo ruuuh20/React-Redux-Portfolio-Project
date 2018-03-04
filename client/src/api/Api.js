@@ -59,5 +59,14 @@ function createComment(listingId, comment){
     })
     }
 
-const Api = { search, createComment, createListing, loadListing };
+    function deleteListing(listingId) {
+      return fetch(`http://localhost:3001/listings/${listingId}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }})
+    }
+
+const Api = { search, createComment, createListing, loadListing, deleteListing };
 export default Api;

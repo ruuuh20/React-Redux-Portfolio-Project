@@ -35,3 +35,11 @@ export function fetchRealtorListings(realtorId) {
         .then(listing => dispatch({type: "CREATE_LISTING_SUCCESS", payload: listing}))
       }
     }
+
+    export function deleteListing(listingId){
+      return (dispatch) => {
+        dispatch({ type: 'DELETING_LISTING' });
+        return Api.deleteListing(listingId)
+        .then(() => {dispatch({ type: 'DELETE_LISTING_SUCCESS', deletedListing: listingId})})
+      }
+    }
