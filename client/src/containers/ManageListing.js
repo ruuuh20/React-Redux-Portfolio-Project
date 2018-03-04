@@ -6,7 +6,6 @@ import * as actions from '../actions/listingActions.js'
 class ManageListing extends Component {
 
   componentDidMount(props) {
-    debugger
     const listingId = parseInt(this.props.match.params.listingId, 10)
     this.props.actions.fetchListing(listingId)}
 

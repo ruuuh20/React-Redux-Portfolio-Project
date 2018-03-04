@@ -7,11 +7,8 @@ Rails.application.routes.draw do
 
   resources :realtors, only: [:index, :show]
 
-  resources :realtors do
-    resources :listings
-  end
-
-  get '/realtors/:realtor_id/search_listings', to: "realtors#listings_index"
+  get '/realtors/:realtor_id/search_listings', to: "realtors#realtor_listings_query"
+  get '/realtors/:realtor_id/listings', to: "realtors#realtor_listings_index"
 
   resources :images, only: [:index, :show, :create]
 

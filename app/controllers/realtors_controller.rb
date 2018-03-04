@@ -5,12 +5,18 @@ class RealtorsController < ApplicationController
     render json: realtors
   end
 
-  def listings_index
+  def realtor_listings_query
+    listings = Listing.where(realtor_id: params[:realtor_id])
     query = params[:address]
-    listing = Listing.where("address LIKE?", "#{query}%")
+    listing = listings.where("address LIKE?", "#{query}%")
     if listing
       render json: listing
     end
+  end
+
+  def realtor_listings_index
+    listings = Listing.where(realtor_id: params[:realtor_id])
+    render json: listings
   end
 
   def show
