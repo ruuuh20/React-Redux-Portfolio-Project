@@ -9,7 +9,7 @@ class ListingPage extends Component {
   componentDidMount() {
     const listingId = parseInt(this.props.match.params.listingId, 10)
     this.props.actions.fetchListing(listingId)}
-    
+
   render() {
     return (
       <div>

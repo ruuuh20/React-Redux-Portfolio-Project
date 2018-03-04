@@ -1,12 +1,29 @@
-import React from 'react'
+import React, {Component} from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/listingActions.js'
 
-const ManageListing = () => {
+class ManageListing extends Component {
 
-  return (
+  componentDidMount(props) {
+    debugger
+    const listingId = parseInt(this.props.match.params.listingId, 10)
+    this.props.actions.fetchListing(listingId)}
+
+  render(){
+    return (
     <div>
-      test
+      {this.props.listing.id}
     </div>
-  )
+  )}
 }
 
-export default ManageListing
+const mapStateToProps = (state) => {
+  return { listing: state.listings.listing};
+};
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageListing)

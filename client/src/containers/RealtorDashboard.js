@@ -43,7 +43,7 @@ class RealtorDashboard extends Component  {
           </div>
           <Route exact path="/dashboard/managelistings" render={() => <ManageListings realtorId={this.state.realtorId} />}/>
           <Route exact path="/dashboard/addlisting" render={() => <AddListing realtorId={this.state.realtorId} />}/>
-          <Route exact path={`/dashboard/managelistings/:listingId`} render={() => <ManageListing />} />
+          <Route path={`/dashboard/managelistings/:listingId`} component={ManageListing} />
         </div>
       </Router>
 
