@@ -27,11 +27,11 @@ class ManageListings extends Component {
 
 
   render(){
-    let listingAddresses = null
+    let listings = null
     if (this.state.listings) {
       let array = []
-      this.state.listings.map(listing => array.push(listing.address))
-      listingAddresses = array
+      this.state.listings.map(listing => array.push(listing))
+      listings = array
     }
   return (
     <div>
@@ -47,7 +47,7 @@ class ManageListings extends Component {
         />
         <small className="form-text text-muted">Search listing by address</small>
       </div>
-      <RealtorListingsList listings={listingAddresses} />
+      <RealtorListingsList listings={listings} />
     </div>
   )}
 }

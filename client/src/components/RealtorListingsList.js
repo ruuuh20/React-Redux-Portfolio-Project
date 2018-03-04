@@ -5,7 +5,7 @@ const RealtorListingsList = ({listings}) => {
   return (
     <div>
       <ul>
-        {listings.map(listing => <li key={listing.id}>{listing}</li>)}
+        {listings.map(listing => <li key={listing.id}>{listing.address}</li>)}
       </ul>
     </div>
   )
