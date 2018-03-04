@@ -171,8 +171,12 @@ class AddListingForm extends Component {
     )}
 }
 
+const mapStateToProps = (state, props) => {
+  return { realtorId: state.sessions.sessionRealtorId};
+};
+
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-export default connect(null, mapDispatchToProps)(AddListingForm)
+export default connect(mapStateToProps, mapDispatchToProps)(AddListingForm)

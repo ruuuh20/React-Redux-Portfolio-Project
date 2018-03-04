@@ -49,7 +49,7 @@ class LoginPage extends React.Component {
                   className="form-control"
                 />
               </div>
-              <button type="submit" className="btn btn-primary">Search</button>
+              <button type="submit" className="btn btn-primary">Log In</button>
             </form>
           </div>
         </div>
