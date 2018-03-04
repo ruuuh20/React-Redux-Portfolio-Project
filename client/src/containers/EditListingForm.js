@@ -8,6 +8,8 @@ class EditListingForm extends Component {
   constructor() {
     super()
     this.state = {
+      id: "",
+      realtorId: "",
       mainImgSource: "",
       imgSources: "",
       neighborhood: "",
@@ -22,6 +24,8 @@ class EditListingForm extends Component {
   componentWillReceiveProps(nextProps){
     const listing = nextProps.listing
     this.setState({
+      id: listing.id,
+      realtorId: listing.realtor_id,
       mainImgSource: listing.main_img,
       imgSources: listing.all_image_sources,
       neighborhood: listing.neighborhood,
@@ -41,8 +45,8 @@ class EditListingForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.props.actions.createListing(this.state.realtorId, this.state)
-    this.props.handleListingCreated()
+    this.props.actions.updateListing(this.state)
+    this.props.handleListingUpdated()
   };
 
   handleImageFieldChange = (event) => {

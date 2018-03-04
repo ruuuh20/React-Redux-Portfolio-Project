@@ -59,6 +59,27 @@ function createComment(listingId, comment){
     })
     }
 
+    function updateListing(listing){
+      return fetch(`http://localhost:3001/listings/${listing.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        realtor_id: listing.realtorId,
+        main_img: listing.mainImgSource,
+        neighborhood: listing.neighborhood,
+        address: listing.address,
+        listing_price: listing.listingPrice,
+        beds: listing.beds,
+        baths: listing.baths,
+        description: listing.description,
+        images: listing.imgSources
+        })
+      })
+      }
+
     function deleteListing(listingId) {
       return fetch(`http://localhost:3001/listings/${listingId}`, {
       method: 'DELETE',
@@ -68,5 +89,5 @@ function createComment(listingId, comment){
       }})
     }
 
-const Api = { search, createComment, createListing, loadListing, deleteListing };
+const Api = { search, createComment, createListing, loadListing, updateListing, deleteListing };
 export default Api;

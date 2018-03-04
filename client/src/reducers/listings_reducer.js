@@ -1,4 +1,4 @@
-export default function listingsReducer(state= {deleting: false, posting: false, loading: false, listing: {}, listings: [], featuredListings: []}, action) {
+export default function listingsReducer(state= {updating: false, deleting: false, posting: false, loading: false, listing: {}, listings: [], featuredListings: []}, action) {
   switch ( action.type ) {
     case 'LOADING_LISTINGS':
       return Object.assign({}, state, {loading: true})
@@ -20,6 +20,13 @@ export default function listingsReducer(state= {deleting: false, posting: false,
       return Object.assign({}, state, {posting: true})
     case 'CREATE_LISTING_SUCCESS':
       return Object.assign({}, state, {posting: false, listings: state.listings.concat(action.payload)})
+    case 'UPDATING_LISTING':
+      return Object.assign({}, state, {updating: true})
+    case 'UPDATE_LISTING_SUCCESS':
+      const indexOfUpdatedListing = state.listings.findIndex(listing => {return listing.id === action.payload.id})
+      let listings = state.listings.splice(indexOfUpdatedListing, 1)
+      listings.concat(action.payload)
+      return Object.assign({}, state, {updating: false, listings: listings, listing: {}})
     case 'DELETING_LISTING':
       return Object.assign({}, state, {deleting: true})
     case 'DELETE_LISTING_SUCCESS':

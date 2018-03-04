@@ -8,7 +8,8 @@ class ManageListing extends Component {
   constructor(){
     super()
     this.state = {
-      listingDeleted: false
+      listingDeleted: false,
+      listingUpdated: false
     }
   }
 
@@ -16,22 +17,29 @@ class ManageListing extends Component {
     const listingId = parseInt(this.props.match.params.listingId, 10)
     this.props.actions.fetchListing(listingId)}
 
-    deleteListing = () => {
-      const listingId = this.props.listing.id
-      this.props.actions.deleteListing(listingId)
-      this.setState({
-        listingDeleted: true
-      })
-    }
+  deleteListing = () => {
+    const listingId = this.props.listing.id
+    this.props.actions.deleteListing(listingId)
+    this.setState({
+      listingDeleted: true
+    })
+  }
+
+  handleListingUpdated= () => {
+    this.setState({
+      listingUpdated: true
+    })
+  }
 
   render(){
     let view = null
     if (this.state.listingDeleted) {view = <p>Listing Deleted.</p>}
+    else if (this.state.listingUpdated) {view = <p>Listing Updated.</p>}
     else {view =
       <div>
         <h6 className="edit-listing-title">{this.props.listing.address}</h6>
         <button onClick= {this.deleteListing.bind(this)} className="delete">Delete Listing</button>
-        <EditListingForm listing={this.props.listing} />
+        <EditListingForm listing={this.props.listing} handleListingUpdated={this.handleListingUpdated}/>
       </div>}
     return (
     <div>

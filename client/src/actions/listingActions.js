@@ -36,6 +36,17 @@ export function fetchRealtorListings(realtorId) {
       }
     }
 
+    export function updateListing(listing) {
+      return (dispatch) => {
+        dispatch({ type: 'UPDATING_LISTING'});
+        return Api.updateListing(listing)
+        .then(response => response.json())
+        .then(listing => dispatch({type: "UPDATE_LISTING_SUCCESS", payload: listing}))
+      }
+    }
+
+
+
     export function deleteListing(listingId){
       return (dispatch) => {
         dispatch({ type: 'DELETING_LISTING' });
