@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Api from '../api/Api'
+import RealtorListingsList from './RealtorListingsList'
 
 class ManageListings extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class ManageListings extends Component {
         />
         <small className="form-text text-muted">Search listing by address</small>
       </div>
-      {listingAddresses}
+      <RealtorListingsList listings={listingAddresses} />
     </div>
   )}
 }
