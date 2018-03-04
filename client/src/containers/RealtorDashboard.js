@@ -6,6 +6,7 @@ import * as realtorActions from '../actions/realtorActions'
 import * as listingActions from '../actions/listingActions'
 import ManageListings from '../components/ManageListings'
 import AddListing from '../components/AddListing'
+import ManageListing from './ManageListing'
 
 class RealtorDashboard extends Component  {
 
@@ -42,6 +43,7 @@ class RealtorDashboard extends Component  {
           </div>
           <Route exact path="/dashboard/managelistings" render={() => <ManageListings realtorId={this.state.realtorId} />}/>
           <Route exact path="/dashboard/addlisting" render={() => <AddListing realtorId={this.state.realtorId} />}/>
+          <Route exact path={`/dashboard/managelistings/:listingId`} render={() => <ManageListing />} />
         </div>
       </Router>
 
