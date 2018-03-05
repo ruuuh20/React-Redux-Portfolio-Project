@@ -11,7 +11,7 @@ import SearchPage from '../components/SearchPage'
 import LoginPage from './LoginPage'
 import RealtorDashboard from './RealtorDashboard'
 
-class App extends Component {
+class Routes extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -98,4 +98,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export const WrapperApp = connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Routes)

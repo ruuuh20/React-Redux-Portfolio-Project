@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { WrapperApp } from './containers/App'
+import App from './components/App'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -11,7 +11,7 @@ window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 ReactDOM.render(
   <Provider store={store}>
-    <WrapperApp />
+    <App />
   </Provider>,
   document.getElementById('root')
 )
